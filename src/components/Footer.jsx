@@ -3,8 +3,6 @@ import { Box, Container, Typography, Grid, Divider, IconButton } from '@mui/mate
 import { Link } from 'react-scroll';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import YouTubeIcon from '@mui/icons-material/YouTube';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
 const quickLinks = [
@@ -97,8 +95,6 @@ export default function Footer() {
               {[
                 { icon: <FacebookIcon />, label: 'Facebook', href: 'https://www.facebook.com/KalpataruInstituteofProfessionalEducation' },
                 { icon: <InstagramIcon />, label: 'Instagram', href: 'https://www.instagram.com/kipe_educational_consultant/' },
-                { icon: <LinkedInIcon />, label: 'LinkedIn', href: '#' },
-                { icon: <YouTubeIcon />, label: 'YouTube', href: '#' },
               ].map(({ icon, label, href }) => (
                 <IconButton
                   key={label}
