@@ -30,7 +30,7 @@ export default function Programmes() {
           animate={headerInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <Box sx={{ textAlign: 'center', mb: 5 }}>
+          <Box sx={{ textAlign: 'left', mb: 5 }}>
             <Typography
               variant="overline"
               sx={{ color: '#7A1F2B', fontWeight: 800, letterSpacing: 3, fontSize: '0.95rem', display: 'block', mb: 1.5 }}
@@ -43,7 +43,7 @@ export default function Programmes() {
             >
               Programmes Offered
             </Typography>
-            <Box sx={{ width: 60, height: 4, bgcolor: '#D4AF37', borderRadius: 2, mx: 'auto' }} />
+            <Box sx={{ width: 60, height: 4, bgcolor: '#D4AF37', borderRadius: 2 }} />
           </Box>
         </motion.div>
 
