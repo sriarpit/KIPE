@@ -124,9 +124,9 @@ export default function Contact() {
                 </Typography>
 
                 {[
-                  { icon: <PhoneIcon sx={{ fontSize: 20 }} />, label: 'Call Us', value: '+91 98765 43210' },
-                  { icon: <EmailIcon sx={{ fontSize: 20 }} />, label: 'Email Us', value: 'info@kipe.edu.in' },
-                  { icon: <LocationOnIcon sx={{ fontSize: 20 }} />, label: 'Visit Us', value: 'India' },
+                  { icon: <PhoneIcon sx={{ fontSize: 20 }} />, label: 'Call Us', value: '+91 91160 32816' },
+                  { icon: <EmailIcon sx={{ fontSize: 20 }} />, label: 'Email Us', value: 'info@kipe.org.in' },
+                  { icon: <LocationOnIcon sx={{ fontSize: 20 }} />, label: 'Visit Us', value: 'A 5 First Floor, SSB Nagar, Swej Farm Road, Ram Nagar, Sodala, Jaipur – 302019' },
                 ].map(({ icon, label, value }) => (
                   <Box key={label} sx={{ display: 'flex', alignItems: 'flex-start', gap: 2 }}>
                     <Box sx={{ color: '#D4AF37', mt: 0.2 }}>{icon}</Box>

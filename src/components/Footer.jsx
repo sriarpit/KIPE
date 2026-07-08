@@ -5,6 +5,7 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import YouTubeIcon from '@mui/icons-material/YouTube';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
 const quickLinks = [
   { label: 'Home', to: 'hero' },
@@ -57,14 +58,18 @@ export default function Footer() {
             </Typography>
             <Box sx={{ display: 'flex', gap: 1 }}>
               {[
-                { icon: <FacebookIcon />, label: 'Facebook' },
-                { icon: <InstagramIcon />, label: 'Instagram' },
-                { icon: <LinkedInIcon />, label: 'LinkedIn' },
-                { icon: <YouTubeIcon />, label: 'YouTube' },
-              ].map(({ icon, label }) => (
+                { icon: <FacebookIcon />, label: 'Facebook', href: 'https://www.facebook.com/KalpataruInstituteofProfessionalEducation' },
+                { icon: <InstagramIcon />, label: 'Instagram', href: 'https://www.instagram.com/kipe_educational_consultant/' },
+                { icon: <LinkedInIcon />, label: 'LinkedIn', href: '#' },
+                { icon: <YouTubeIcon />, label: 'YouTube', href: '#' },
+              ].map(({ icon, label, href }) => (
                 <IconButton
                   key={label}
                   size="small"
+                  component="a"
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={label}
                   sx={{
                     color: 'rgba(255,255,255,0.6)',
@@ -138,7 +143,7 @@ export default function Footer() {
             </Box>
           </Grid>
 
-          {/* Contact info */}
+          {/* Find Us */}
           <Grid size={{ xs: 12, md: 3 }}>
             <Typography
               sx={{
@@ -150,24 +155,57 @@ export default function Footer() {
                 mb: 2.5,
               }}
             >
-              Contact Us
+              Find Us
             </Typography>
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-              {[
-                { label: 'Phone', value: '+91 98765 43210' },
-                { label: 'Email', value: 'info@kipe.edu.in' },
-                { label: 'Hours', value: 'Mon–Sat: 9 AM – 7 PM' },
-              ].map(({ label, value }) => (
-                <Box key={label}>
-                  <Typography sx={{ color: '#D4AF37', fontWeight: 600, fontSize: '0.75rem', mb: 0.3 }}>
-                    {label}
-                  </Typography>
-                  <Typography sx={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.88rem' }}>
-                    {value}
+            <Box sx={{ position: 'relative', borderRadius: 2, overflow: 'hidden', mb: 2 }}>
+              <Box
+                component="iframe"
+                src="https://maps.google.com/maps?q=A+5+First+Floor+SSB+Nagar+Swej+Farm+Road+Ram+Nagar+Sodala+Jaipur+302019+India&output=embed"
+                width="100%"
+                height={180}
+                sx={{ border: 0, display: 'block', pointerEvents: 'none' }}
+                title="KIPE Location"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+              <Box
+                component="a"
+                href="https://maps.app.goo.gl/iYtvyV4HXHpMrcEm9"
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{
+                  position: 'absolute',
+                  inset: 0,
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  p: 1,
+                  textDecoration: 'none',
+                }}
+              >
+                <Box
+                  sx={{
+                    bgcolor: '#FFFFFF',
+                    borderRadius: 1,
+                    px: 1.5,
+                    py: 0.6,
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 0.7,
+                    boxShadow: '0 2px 8px rgba(0,0,0,0.3)',
+                  }}
+                >
+                  <OpenInNewIcon sx={{ fontSize: 13, color: '#1565C0' }} />
+                  <Typography sx={{ fontSize: '0.72rem', fontWeight: 600, color: '#1565C0' }}>
+                    Open in Maps
                   </Typography>
                 </Box>
-              ))}
+              </Box>
             </Box>
+            <Typography sx={{ color: 'rgba(255,255,255,0.65)', fontSize: '0.82rem', lineHeight: 1.7 }}>
+              A 5 First Floor, SSB Nagar,<br />
+              Swej Farm Road, Ram Nagar,<br />
+              Sodala, Jaipur – 302019
+            </Typography>
           </Grid>
         </Grid>
 
