@@ -1,171 +1,28 @@
 import React, { useRef } from 'react';
 import { Box, Container, Typography, Grid, Chip } from '@mui/material';
 import { motion, useInView } from 'framer-motion';
-import SchoolIcon from '@mui/icons-material/School';
-import ComputerIcon from '@mui/icons-material/Computer';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import ImportContactsIcon from '@mui/icons-material/ImportContacts';
-import AutoStoriesIcon from '@mui/icons-material/AutoStories';
+import DevicesIcon from '@mui/icons-material/Devices';
+import ApartmentIcon from '@mui/icons-material/Apartment';
 
 const ugCourses = ['BBA', 'BCA', 'BA', 'B.Sc (PCM)', 'B.Lib', 'BA Journalism', 'B.Com'];
 const pgCourses = ['MBA', 'MCA', 'M.Sc Maths', 'PGDCA', 'M.Com (Acc)', 'MA'];
 
-const availablePrograms = [
-  { icon: <SchoolIcon />, label: 'UG Programs', sub: 'Bachelor degree programmes' },
-  { icon: <AutoStoriesIcon />, label: 'PG Programs', sub: 'Master & postgraduate programmes' },
-  { icon: <ComputerIcon />, label: 'Online Programs', sub: 'Study from anywhere, anytime' },
-  { icon: <MenuBookIcon />, label: 'Distance Education', sub: 'Flexible, self-paced learning' },
-  { icon: <ImportContactsIcon />, label: 'Class 10th & 12th via NIOS', sub: 'National Institute of Open Schooling' },
+const modes = [
+  { icon: <DevicesIcon sx={{ fontSize: 28 }} />, label: 'Online', desc: 'Study anytime, anywhere' },
+  { icon: <MenuBookIcon sx={{ fontSize: 28 }} />, label: 'Distance', desc: 'Flexible, self-paced learning' },
+  { icon: <ApartmentIcon sx={{ fontSize: 28 }} />, label: 'Regular', desc: 'Traditional classroom experience' },
 ];
-
-function CourseCard({ title, courses, color, delay }) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '-60px' });
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 40 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.65, delay, ease: 'easeOut' }}
-    >
-      <Box
-        sx={{
-          bgcolor: color,
-          borderRadius: 3,
-          p: 4,
-          height: '100%',
-          position: 'relative',
-          overflow: 'hidden',
-        }}
-      >
-        {/* Decorative circle */}
-        <Box
-          sx={{
-            position: 'absolute',
-            top: -40, right: -40,
-            width: 180, height: 180,
-            bgcolor: 'rgba(255,255,255,0.05)',
-            borderRadius: '50%',
-          }}
-        />
-
-        <Typography
-          variant="overline"
-          sx={{
-            color: '#D4AF37',
-            fontWeight: 700,
-            letterSpacing: 3,
-            fontSize: '0.7rem',
-            display: 'block',
-            mb: 1,
-          }}
-        >
-          {title === 'UG Programmes' ? 'Undergraduate' : 'Postgraduate'}
-        </Typography>
-        <Typography
-          variant="h4"
-          sx={{ color: '#FFFFFF', fontWeight: 800, mb: 3, fontSize: '1.6rem' }}
-        >
-          {title}
-        </Typography>
-
-        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1.5 }}>
-          {courses.map((course) => (
-            <Chip
-              key={course}
-              label={course}
-              sx={{
-                bgcolor: 'rgba(212,175,55,0.15)',
-                color: '#D4AF37',
-                border: '1px solid rgba(212,175,55,0.35)',
-                fontWeight: 600,
-                fontSize: '0.85rem',
-                '& .MuiChip-label': { px: 1.5 },
-                transition: 'all 0.2s',
-                '&:hover': {
-                  bgcolor: 'rgba(212,175,55,0.28)',
-                  transform: 'scale(1.03)',
-                },
-              }}
-            />
-          ))}
-        </Box>
-      </Box>
-    </motion.div>
-  );
-}
-
-function ProgramRow({ item, index }) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '-40px' });
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, x: -30 }}
-      animate={inView ? { opacity: 1, x: 0 } : {}}
-      transition={{ duration: 0.5, delay: index * 0.08, ease: 'easeOut' }}
-    >
-      <Box
-        sx={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: 2.5,
-          py: 2,
-          px: 3,
-          borderRadius: 2,
-          bgcolor: index % 2 === 0 ? '#FFFFFF' : '#FAF8F5',
-          border: '1px solid #EDE8E3',
-          transition: 'all 0.2s',
-          '&:hover': {
-            borderColor: '#D4AF37',
-            bgcolor: '#FFFDF5',
-            transform: 'translateX(4px)',
-          },
-        }}
-      >
-        <Box
-          sx={{
-            width: 48,
-            height: 48,
-            borderRadius: '50%',
-            bgcolor: '#0C2340',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            color: '#D4AF37',
-            flexShrink: 0,
-          }}
-        >
-          {item.icon}
-        </Box>
-        <Box>
-          <Typography sx={{ fontWeight: 700, color: '#0C2340', fontSize: '1rem' }}>
-            {item.label}
-          </Typography>
-          <Typography sx={{ color: '#5C5C5C', fontSize: '0.83rem' }}>
-            {item.sub}
-          </Typography>
-        </Box>
-      </Box>
-    </motion.div>
-  );
-}
 
 export default function Programmes() {
   const headerRef = useRef(null);
   const headerInView = useInView(headerRef, { once: true, margin: '-60px' });
 
   return (
-    <Box
-      id="programmes"
-      sx={{
-        py: { xs: 5, md: 7 },
-        bgcolor: '#FFFFFF',
-      }}
-    >
+    <Box id="programmes" sx={{ py: { xs: 5, md: 7 }, bgcolor: '#FAF8F5' }}>
       <Container maxWidth="lg">
+
         {/* Header */}
         <motion.div
           ref={headerRef}
@@ -191,35 +48,144 @@ export default function Programmes() {
         </motion.div>
 
         {/* UG / PG Cards */}
-        <Grid container spacing={3} sx={{ mb: 6 }}>
-          <Grid size={{ xs: 12, md: 6 }}>
-            <CourseCard title="UG Programmes" courses={ugCourses} color="#0C2340" delay={0.1} />
-          </Grid>
-          <Grid size={{ xs: 12, md: 6 }}>
-            <CourseCard title="PG Programmes" courses={pgCourses} color="#7A1F2B" delay={0.2} />
-          </Grid>
+        <Grid container spacing={3} sx={{ mb: 4 }}>
+          {[
+            { label: 'UNDERGRADUATE', title: 'UG Programmes', courses: ugCourses, color: '#0C2340' },
+            { label: 'POSTGRADUATE', title: 'PG Programmes', courses: pgCourses, color: '#7A1F2B' },
+          ].map((item, i) => (
+            <Grid size={{ xs: 12, md: 6 }} key={item.title}>
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.15 }}
+              >
+                <Box
+                  sx={{
+                    bgcolor: item.color,
+                    borderRadius: 3,
+                    p: 4,
+                    height: '100%',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                    '&:hover': { transform: 'translateY(-5px)', boxShadow: '0 20px 48px rgba(0,0,0,0.3)' },
+                  }}
+                >
+                  <Box sx={{ position: 'absolute', top: -50, right: -50, width: 200, height: 200, bgcolor: 'rgba(255,255,255,0.04)', borderRadius: '50%' }} />
+                  <Typography sx={{ color: '#D4AF37', fontWeight: 700, fontSize: '0.72rem', letterSpacing: 3, textTransform: 'uppercase', mb: 1 }}>
+                    {item.label}
+                  </Typography>
+                  <Box sx={{ display: 'flex', alignItems: 'baseline', gap: 2, mb: 0.5 }}>
+                    <Typography sx={{ color: '#FFFFFF', fontWeight: 800, fontSize: '1.6rem' }}>{item.title}</Typography>
+                    <Typography sx={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.85rem' }}>{item.courses.length} Courses</Typography>
+                  </Box>
+                  <Box sx={{ width: 40, height: 2, bgcolor: '#D4AF37', borderRadius: 1, mb: 3 }} />
+                  <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+                    {item.courses.map((c) => (
+                      <Chip
+                        key={c}
+                        label={c}
+                        sx={{
+                          bgcolor: 'rgba(212,175,55,0.12)',
+                          color: '#D4AF37',
+                          border: '1px solid rgba(212,175,55,0.3)',
+                          fontWeight: 600,
+                          fontSize: '0.83rem',
+                          '&:hover': { bgcolor: 'rgba(212,175,55,0.25)' },
+                        }}
+                      />
+                    ))}
+                  </Box>
+                </Box>
+              </motion.div>
+            </Grid>
+          ))}
         </Grid>
 
-        {/* Programs Available */}
-        <Box>
-          <Typography
-            variant="h5"
+        {/* Mode strips */}
+        <Grid container spacing={2} sx={{ mb: 3 }}>
+          {modes.map((m, i) => (
+            <Grid size={{ xs: 12, sm: 4 }} key={m.label}>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+              >
+                <Box
+                  sx={{
+                    bgcolor: '#FFFFFF',
+                    borderRadius: 2.5,
+                    p: 3,
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 2,
+                    border: '1px solid #E8E4E0',
+                    transition: 'all 0.25s ease',
+                    '&:hover': { borderColor: '#D4AF37', boxShadow: '0 8px 24px rgba(212,175,55,0.15)', transform: 'translateY(-3px)' },
+                  }}
+                >
+                  <Box
+                    sx={{
+                      color: '#0C2340',
+                      bgcolor: '#FAF8F5',
+                      width: 50, height: 50,
+                      borderRadius: '50%',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      flexShrink: 0,
+                      border: '2px solid #E8E4E0',
+                    }}
+                  >
+                    {m.icon}
+                  </Box>
+                  <Box>
+                    <Typography sx={{ fontWeight: 700, color: '#0C2340', fontSize: '1rem' }}>{m.label}</Typography>
+                    <Typography sx={{ color: '#5C5C5C', fontSize: '0.82rem' }}>{m.desc}</Typography>
+                  </Box>
+                </Box>
+              </motion.div>
+            </Grid>
+          ))}
+        </Grid>
+
+        {/* NIOS Banner */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <Box
             sx={{
-              color: '#0C2340',
-              fontWeight: 700,
-              mb: 3,
-              textAlign: 'center',
-              fontSize: '1.4rem',
+              background: 'linear-gradient(135deg, #D4AF37 0%, #C09B22 100%)',
+              borderRadius: 3,
+              p: { xs: 3, md: 3.5 },
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              flexWrap: 'wrap',
+              gap: 2,
             }}
           >
-            Programs Available
-          </Typography>
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5, maxWidth: 700, mx: 'auto' }}>
-            {availablePrograms.map((item, i) => (
-              <ProgramRow key={item.label} item={item} index={i} />
-            ))}
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+              <ImportContactsIcon sx={{ color: '#0C2340', fontSize: 36 }} />
+              <Box>
+                <Typography sx={{ color: '#0C2340', fontWeight: 800, fontSize: '1.05rem' }}>
+                  Class 10th & 12th via NIOS
+                </Typography>
+                <Typography sx={{ color: 'rgba(12,35,64,0.65)', fontSize: '0.85rem' }}>
+                  National Institute of Open Schooling
+                </Typography>
+              </Box>
+            </Box>
+            <Chip
+              label="Know More →"
+              sx={{ bgcolor: '#0C2340', color: '#D4AF37', fontWeight: 700, cursor: 'pointer' }}
+            />
           </Box>
-        </Box>
+        </motion.div>
+
       </Container>
     </Box>
   );

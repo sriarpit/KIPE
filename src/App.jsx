@@ -3,7 +3,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import WhyKIPE from './components/WhyKIPE';
-import Programmes from './components/ProgrammesShowcase';
+import Programmes from './components/Programmes';
 import UniversityPartners from './components/UniversityPartners';
 import HowItWorks from './components/HowItWorks';
 import Contact from './components/Contact';
