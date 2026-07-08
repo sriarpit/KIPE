@@ -226,80 +226,98 @@ export default function HowItWorks() {
           <Box
             sx={{
               mt: 8,
-              p: { xs: 3, md: 4 },
-              bgcolor: '#FAF8F5',
-              border: '2px solid #D4AF37',
+              p: { xs: 4, md: 5 },
+              bgcolor: '#0C2340',
               borderRadius: 3,
-              textAlign: 'center',
+              position: 'relative',
+              overflow: 'hidden',
+              display: 'flex',
+              flexDirection: { xs: 'column', md: 'row' },
+              alignItems: { xs: 'flex-start', md: 'center' },
+              justifyContent: 'space-between',
+              gap: { xs: 4, md: 5 },
             }}
           >
-            <Typography sx={{ color: '#0C2340', fontWeight: 700, fontSize: '1.1rem', mb: 0.5 }}>
-              Ready to take the first step?
-            </Typography>
-            <Typography sx={{ color: '#5C5C5C', fontSize: '0.95rem', mb: 2.5 }}>
-              Our counsellors are available Mon–Sat, 9 AM to 7 PM. Reach out anytime.
-            </Typography>
+            {/* Decorative circles */}
+            {[{ size: 220, top: -80, right: -80 }, { size: 140, bottom: -50, left: -50 }].map((d, i) => (
+              <Box key={i} sx={{
+                position: 'absolute',
+                width: d.size, height: d.size,
+                borderRadius: '50%',
+                border: '1px solid rgba(212,175,55,0.1)',
+                top: d.top, right: d.right, bottom: d.bottom, left: d.left,
+                pointerEvents: 'none',
+              }} />
+            ))}
 
-            {/* Divider */}
-            <Box sx={{ width: 40, height: 2, bgcolor: '#D4AF37', borderRadius: 1, mx: 'auto', mb: 2.5 }} />
+            {/* Left: text */}
+            <Box sx={{ flex: 1, position: 'relative', zIndex: 1 }}>
+              <Typography sx={{
+                color: '#D4AF37', fontWeight: 700, fontSize: '0.78rem',
+                letterSpacing: 3, textTransform: 'uppercase', mb: 1.5,
+              }}>
+                Get In Touch
+              </Typography>
+              <Typography sx={{
+                color: '#FFFFFF', fontWeight: 800,
+                fontSize: { xs: '1.5rem', md: '1.9rem' },
+                lineHeight: 1.25, mb: 1.5,
+              }}>
+                Ready to take the<br />first step?
+              </Typography>
+              <Typography sx={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.95rem', lineHeight: 1.7 }}>
+                Our counsellors are available Mon–Sat,<br />9 AM to 7 PM. Reach out anytime.
+              </Typography>
+            </Box>
 
-            {/* Contact details */}
-            <Box
-              sx={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                gap: { xs: 2, md: 5 },
-                flexWrap: 'wrap',
-              }}
-            >
-              <Box
-                component="a"
-                href="tel:+919116032816"
-                sx={{
-                  display: 'flex', alignItems: 'center', gap: 1,
-                  textDecoration: 'none',
-                  px: 2.5, py: 1,
-                  borderRadius: 2,
-                  border: '1px solid rgba(212,175,55,0.35)',
-                  bgcolor: '#FFFFFF',
-                  transition: 'all 0.2s ease',
-                  '&:hover': {
-                    borderColor: '#D4AF37',
-                    boxShadow: '0 4px 16px rgba(212,175,55,0.2)',
-                    transform: 'translateY(-2px)',
-                  },
-                }}
-              >
-                <PhoneIcon sx={{ color: '#D4AF37', fontSize: 18 }} />
-                <Typography sx={{ color: '#0C2340', fontWeight: 700, fontSize: '0.95rem' }}>
-                  +91 91160 32816
-                </Typography>
-              </Box>
-
-              <Box
-                component="a"
-                href="mailto:info@kipe.org.in"
-                sx={{
-                  display: 'flex', alignItems: 'center', gap: 1,
-                  textDecoration: 'none',
-                  px: 2.5, py: 1,
-                  borderRadius: 2,
-                  border: '1px solid rgba(212,175,55,0.35)',
-                  bgcolor: '#FFFFFF',
-                  transition: 'all 0.2s ease',
-                  '&:hover': {
-                    borderColor: '#D4AF37',
-                    boxShadow: '0 4px 16px rgba(212,175,55,0.2)',
-                    transform: 'translateY(-2px)',
-                  },
-                }}
-              >
-                <EmailIcon sx={{ color: '#D4AF37', fontSize: 18 }} />
-                <Typography sx={{ color: '#0C2340', fontWeight: 700, fontSize: '0.95rem' }}>
-                  info@kipe.org.in
-                </Typography>
-              </Box>
+            {/* Right: contact cards */}
+            <Box sx={{
+              display: 'flex', flexDirection: 'column', gap: 2,
+              minWidth: { md: 260 }, position: 'relative', zIndex: 1,
+              width: { xs: '100%', md: 'auto' },
+            }}>
+              {[
+                { href: 'tel:+919116032816', icon: <PhoneIcon sx={{ fontSize: 19, color: '#0C2340' }} />, label: 'Call Us', value: '+91 91160 32816' },
+                { href: 'mailto:info@kipe.org.in', icon: <EmailIcon sx={{ fontSize: 19, color: '#0C2340' }} />, label: 'Email Us', value: 'info@kipe.org.in' },
+              ].map(({ href, icon, label, value }) => (
+                <Box
+                  key={label}
+                  component="a"
+                  href={href}
+                  sx={{
+                    display: 'flex', alignItems: 'center', gap: 2,
+                    textDecoration: 'none',
+                    p: 2,
+                    borderRadius: 2.5,
+                    bgcolor: 'rgba(212,175,55,0.08)',
+                    border: '1px solid rgba(212,175,55,0.2)',
+                    transition: 'all 0.25s ease',
+                    '&:hover': {
+                      bgcolor: 'rgba(212,175,55,0.16)',
+                      borderColor: '#D4AF37',
+                      transform: 'translateX(5px)',
+                      boxShadow: '0 6px 20px rgba(212,175,55,0.15)',
+                    },
+                  }}
+                >
+                  <Box sx={{
+                    width: 42, height: 42, borderRadius: '50%',
+                    bgcolor: '#D4AF37', display: 'flex',
+                    alignItems: 'center', justifyContent: 'center', flexShrink: 0,
+                    boxShadow: '0 4px 12px rgba(212,175,55,0.4)',
+                  }}>
+                    {icon}
+                  </Box>
+                  <Box>
+                    <Typography sx={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.7rem', mb: 0.3, textTransform: 'uppercase', letterSpacing: 1 }}>
+                      {label}
+                    </Typography>
+                    <Typography sx={{ color: '#FFFFFF', fontWeight: 700, fontSize: '0.97rem' }}>
+                      {value}
+                    </Typography>
+                  </Box>
+                </Box>
+              ))}
             </Box>
           </Box>
         </motion.div>
