@@ -33,7 +33,7 @@ export default function Programmes() {
           <Box sx={{ textAlign: 'left', mb: 5 }}>
             <Typography
               variant="overline"
-              sx={{ color: '#7A1F2B', fontWeight: 800, letterSpacing: 3, fontSize: '0.95rem', display: 'block', mb: 1.5 }}
+              sx={{ color: '#7A1F2B', fontWeight: 800, letterSpacing: 3, fontSize: '0.95rem', display: 'block', mb: 0.5 }}
             >
               What We Offer
             </Typography>
