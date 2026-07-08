@@ -254,7 +254,7 @@ export default function HowItWorks() {
             <Box sx={{ flex: 1, position: 'relative', zIndex: 1 }}>
               <Typography sx={{
                 color: '#FFFFFF', fontWeight: 800,
-                fontSize: { xs: '1.7rem', md: '2.3rem' },
+                fontSize: { xs: '1.7rem', md: '3.3rem' },
                 lineHeight: 1.2, mb: 1.5,
               }}>
                 Ready to take the first step?
