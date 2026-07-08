@@ -24,12 +24,12 @@ export default function About() {
     <Box
       id="about"
       sx={{
-        py: { xs: 8, md: 12 },
+        py: { xs: 6, md: 8 },
         bgcolor: '#FFFFFF',
       }}
     >
       <Container maxWidth="lg">
-        <Grid container spacing={{ xs: 4, md: 8 }} alignItems="center">
+        <Grid container spacing={{ xs: 4, md: 6 }} alignItems="center">
           {/* Left column */}
           <Grid size={{ xs: 12, md: 4 }}>
             <AnimatedSection delay={0}>
@@ -53,7 +53,7 @@ export default function About() {
                   fontWeight: 800,
                   fontSize: { xs: '2rem', md: '2.6rem' },
                   lineHeight: 1.2,
-                  mb: 3,
+                  mb: 2,
                 }}
               >
                 Education That Fits Your Life
@@ -65,7 +65,7 @@ export default function About() {
                   height: 4,
                   bgcolor: '#D4AF37',
                   borderRadius: 2,
-                  mb: 3,
+                  mb: 2,
                 }}
               />
             </AnimatedSection>
