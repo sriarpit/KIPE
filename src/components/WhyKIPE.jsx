@@ -136,9 +136,9 @@ export default function WhyKIPE() {
               variant="overline"
               sx={{
                 color: '#7A1F2B',
-                fontWeight: 700,
+                fontWeight: 800,
                 letterSpacing: 3,
-                fontSize: '0.75rem',
+                fontSize: '0.95rem',
                 display: 'block',
                 mb: 1.5,
               }}
