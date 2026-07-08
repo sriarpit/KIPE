@@ -5,7 +5,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import RecordVoiceOverIcon from '@mui/icons-material/RecordVoiceOver';
 import DescriptionIcon from '@mui/icons-material/Description';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 const steps = [
   {
@@ -192,18 +192,16 @@ export default function HowItWorks() {
               transition={{ duration: 0.4, delay: 0.6 + i * 0.15 }}
               style={{
                 position: 'absolute',
-                top: 29,
+                top: 16,
                 left: `${25 * (i + 1)}%`,
                 transform: 'translateX(-50%)',
                 zIndex: 3,
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                width: 24,
-                height: 24,
               }}
             >
-              <ArrowForwardIcon style={{ fontSize: 13, color: '#0C2340' }} />
+              <ChevronRightIcon style={{ fontSize: 48, color: '#D4AF37', filter: 'drop-shadow(0 2px 6px rgba(212,175,55,0.5))' }} />
             </motion.div>
           ))}
 
