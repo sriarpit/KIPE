@@ -53,7 +53,7 @@ export default function Footer() {
                 <Typography
                   sx={{
                     fontWeight: 800,
-                    fontSize: '2.8rem',
+                    fontSize: '3.8rem',
                     lineHeight: 1.1,
                     mb: 0.5,
                     background: 'linear-gradient(135deg, #F5D76E 0%, #D4AF37 55%, #C09B22 100%)',
