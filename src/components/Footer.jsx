@@ -32,17 +32,54 @@ export default function Footer() {
         <Grid container spacing={5}>
           {/* Brand column */}
           <Grid size={{ xs: 12, md: 4 }}>
-            <Box component="img" src="/kipe-logo.png" alt="KIPE Logo" sx={{ height: 80, mb: 2 }} />
-            <Typography
-              sx={{ color: '#D4AF37', fontWeight: 700, fontSize: '1.1rem', mb: 0.5 }}
-            >
-              KIPE
-            </Typography>
-            <Typography
-              sx={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.85rem', mb: 2, lineHeight: 1.5 }}
-            >
-              Kalpataru Institute of Professional Education
-            </Typography>
+            {/* Logo + name side by side */}
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2.5 }}>
+              <Box
+                component="img"
+                src="/kipe-logo.png"
+                alt="KIPE Logo"
+                sx={{
+                  height: 110,
+                  width: 110,
+                  objectFit: 'contain',
+                  flexShrink: 0,
+                  filter: 'drop-shadow(0 4px 14px rgba(212,175,55,0.3))',
+                  transition: 'transform 0.3s ease, filter 0.3s ease',
+                  '&:hover': {
+                    transform: 'scale(1.06)',
+                    filter: 'drop-shadow(0 6px 22px rgba(212,175,55,0.55))',
+                  },
+                }}
+              />
+              <Box>
+                <Typography
+                  sx={{
+                    fontWeight: 800,
+                    fontSize: '1.6rem',
+                    lineHeight: 1.1,
+                    mb: 0.5,
+                    background: 'linear-gradient(135deg, #F5D76E 0%, #D4AF37 55%, #C09B22 100%)',
+                    backgroundClip: 'text',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    filter: 'drop-shadow(0 2px 6px rgba(212,175,55,0.3))',
+                  }}
+                >
+                  KIPE
+                </Typography>
+                <Typography
+                  sx={{
+                    color: 'rgba(255,255,255,0.8)',
+                    fontSize: '0.83rem',
+                    lineHeight: 1.5,
+                    fontWeight: 500,
+                  }}
+                >
+                  Kalpataru Institute of<br />Professional Education
+                </Typography>
+              </Box>
+            </Box>
+
             <Typography
               sx={{
                 color: 'rgba(255,255,255,0.55)',
