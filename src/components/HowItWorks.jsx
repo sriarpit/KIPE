@@ -122,7 +122,7 @@ export default function HowItWorks() {
   const headerInView = useInView(headerRef, { once: true, margin: '-60px' });
 
   return (
-    <Box id="how-it-works" sx={{ py: { xs: 8, md: 12 }, bgcolor: '#FFFFFF' }}>
+    <Box id="how-it-works" sx={{ py: { xs: 5, md: 7 }, bgcolor: '#FFFFFF' }}>
       <Container maxWidth="lg">
         {/* Header */}
         <motion.div
@@ -131,7 +131,7 @@ export default function HowItWorks() {
           animate={headerInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <Box sx={{ textAlign: 'center', mb: 8 }}>
+          <Box sx={{ textAlign: 'center', mb: 5 }}>
             <Typography
               variant="overline"
               sx={{ color: '#7A1F2B', fontWeight: 800, letterSpacing: 3, fontSize: '0.95rem', display: 'block', mb: 1.5 }}

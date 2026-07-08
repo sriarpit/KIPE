@@ -161,7 +161,7 @@ export default function Programmes() {
     <Box
       id="programmes"
       sx={{
-        py: { xs: 8, md: 12 },
+        py: { xs: 5, md: 7 },
         bgcolor: '#FFFFFF',
       }}
     >
@@ -173,7 +173,7 @@ export default function Programmes() {
           animate={headerInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <Box sx={{ textAlign: 'center', mb: 7 }}>
+          <Box sx={{ textAlign: 'center', mb: 5 }}>
             <Typography
               variant="overline"
               sx={{ color: '#7A1F2B', fontWeight: 800, letterSpacing: 3, fontSize: '0.95rem', display: 'block', mb: 1.5 }}

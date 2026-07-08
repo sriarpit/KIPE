@@ -119,7 +119,7 @@ export default function WhyKIPE() {
   return (
     <Box
       sx={{
-        py: { xs: 8, md: 12 },
+        py: { xs: 5, md: 7 },
         bgcolor: '#FAF8F5',
       }}
     >
@@ -131,7 +131,7 @@ export default function WhyKIPE() {
           animate={headerInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, ease: 'easeOut' }}
         >
-          <Box sx={{ textAlign: 'center', mb: 7 }}>
+          <Box sx={{ textAlign: 'center', mb: 5 }}>
             <Typography
               variant="overline"
               sx={{

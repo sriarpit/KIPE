@@ -124,7 +124,7 @@ export default function UniversityPartners() {
   const unis = universityData[currentMode];
 
   return (
-    <Box id="partners" sx={{ py: { xs: 8, md: 12 }, bgcolor: '#FAF8F5' }}>
+    <Box id="partners" sx={{ py: { xs: 5, md: 7 }, bgcolor: '#FAF8F5' }}>
       <Container maxWidth="lg">
         {/* Header */}
         <motion.div
@@ -133,7 +133,7 @@ export default function UniversityPartners() {
           animate={headerInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <Box sx={{ textAlign: 'center', mb: 6 }}>
+          <Box sx={{ textAlign: 'center', mb: 4 }}>
             <Typography
               variant="overline"
               sx={{ color: '#7A1F2B', fontWeight: 800, letterSpacing: 3, fontSize: '0.95rem', display: 'block', mb: 1.5 }}
