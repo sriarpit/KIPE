@@ -201,9 +201,6 @@ export default function HowItWorks() {
                 justifyContent: 'center',
                 width: 24,
                 height: 24,
-                background: '#D4AF37',
-                borderRadius: '50%',
-                boxShadow: '0 2px 10px rgba(212,175,55,0.6)',
               }}
             >
               <ArrowForwardIcon style={{ fontSize: 13, color: '#0C2340' }} />
