@@ -60,8 +60,6 @@ export default function Navbar() {
                     color: '#FFFFFF',
                     fontWeight: 500,
                     fontSize: '0.875rem',
-                    textTransform: 'uppercase',
-                    letterSpacing: 0.8,
                     px: 1.5,
                     position: 'relative',
                     '&::after': {
@@ -140,8 +138,6 @@ export default function Navbar() {
                         color: '#FFFFFF',
                         fontWeight: 500,
                         fontSize: '1rem',
-                        textTransform: 'uppercase',
-                        letterSpacing: 0.8,
                         cursor: 'pointer',
                         '&:hover': { color: '#D4AF37' },
                       },
