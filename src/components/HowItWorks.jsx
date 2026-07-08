@@ -6,6 +6,8 @@ import RecordVoiceOverIcon from '@mui/icons-material/RecordVoiceOver';
 import DescriptionIcon from '@mui/icons-material/Description';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import PhoneIcon from '@mui/icons-material/Phone';
+import EmailIcon from '@mui/icons-material/Email';
 
 const steps = [
   {
@@ -234,9 +236,71 @@ export default function HowItWorks() {
             <Typography sx={{ color: '#0C2340', fontWeight: 700, fontSize: '1.1rem', mb: 0.5 }}>
               Ready to take the first step?
             </Typography>
-            <Typography sx={{ color: '#5C5C5C', fontSize: '0.95rem' }}>
+            <Typography sx={{ color: '#5C5C5C', fontSize: '0.95rem', mb: 2.5 }}>
               Our counsellors are available Mon–Sat, 9 AM to 7 PM. Reach out anytime.
             </Typography>
+
+            {/* Divider */}
+            <Box sx={{ width: 40, height: 2, bgcolor: '#D4AF37', borderRadius: 1, mx: 'auto', mb: 2.5 }} />
+
+            {/* Contact details */}
+            <Box
+              sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                gap: { xs: 2, md: 5 },
+                flexWrap: 'wrap',
+              }}
+            >
+              <Box
+                component="a"
+                href="tel:+919116032816"
+                sx={{
+                  display: 'flex', alignItems: 'center', gap: 1,
+                  textDecoration: 'none',
+                  px: 2.5, py: 1,
+                  borderRadius: 2,
+                  border: '1px solid rgba(212,175,55,0.35)',
+                  bgcolor: '#FFFFFF',
+                  transition: 'all 0.2s ease',
+                  '&:hover': {
+                    borderColor: '#D4AF37',
+                    boxShadow: '0 4px 16px rgba(212,175,55,0.2)',
+                    transform: 'translateY(-2px)',
+                  },
+                }}
+              >
+                <PhoneIcon sx={{ color: '#D4AF37', fontSize: 18 }} />
+                <Typography sx={{ color: '#0C2340', fontWeight: 700, fontSize: '0.95rem' }}>
+                  +91 91160 32816
+                </Typography>
+              </Box>
+
+              <Box
+                component="a"
+                href="mailto:info@kipe.org.in"
+                sx={{
+                  display: 'flex', alignItems: 'center', gap: 1,
+                  textDecoration: 'none',
+                  px: 2.5, py: 1,
+                  borderRadius: 2,
+                  border: '1px solid rgba(212,175,55,0.35)',
+                  bgcolor: '#FFFFFF',
+                  transition: 'all 0.2s ease',
+                  '&:hover': {
+                    borderColor: '#D4AF37',
+                    boxShadow: '0 4px 16px rgba(212,175,55,0.2)',
+                    transform: 'translateY(-2px)',
+                  },
+                }}
+              >
+                <EmailIcon sx={{ color: '#D4AF37', fontSize: 18 }} />
+                <Typography sx={{ color: '#0C2340', fontWeight: 700, fontSize: '0.95rem' }}>
+                  info@kipe.org.in
+                </Typography>
+              </Box>
+            </Box>
           </Box>
         </motion.div>
       </Container>
