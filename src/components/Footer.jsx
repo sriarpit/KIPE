@@ -201,11 +201,6 @@ export default function Footer() {
                 </Box>
               </Box>
             </Box>
-            <Typography sx={{ color: 'rgba(255,255,255,0.65)', fontSize: '0.82rem', lineHeight: 1.7 }}>
-              A 5 First Floor, SSB Nagar,<br />
-              Swej Farm Road, Ram Nagar,<br />
-              Sodala, Jaipur – 302019
-            </Typography>
           </Grid>
         </Grid>
 
