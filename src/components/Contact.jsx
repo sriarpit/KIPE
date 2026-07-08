@@ -117,7 +117,19 @@ export default function Contact() {
               >
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                   <Box component="img" src="/kipe-logo.png" alt="KIPE" sx={{ width: 80, flexShrink: 0 }} />
-                  <Typography sx={{ color: '#D4AF37', fontWeight: 700, fontSize: '1.05rem', lineHeight: 1.4 }}>
+                  <Typography
+                    sx={{
+                      fontWeight: 800,
+                      fontSize: '1.25rem',
+                      lineHeight: 1.35,
+                      background: 'linear-gradient(135deg, #F5D76E 0%, #D4AF37 50%, #C09B22 100%)',
+                      backgroundClip: 'text',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      filter: 'drop-shadow(0 2px 8px rgba(212,175,55,0.35))',
+                      letterSpacing: 0.3,
+                    }}
+                  >
                     Kalpataru Institute of Professional Education
                   </Typography>
                 </Box>
