@@ -138,6 +138,8 @@ export default function Footer() {
                     sx={{
                       color: 'rgba(255,255,255,0.65)',
                       fontSize: '0.88rem',
+                      textTransform: 'uppercase',
+                      letterSpacing: 0.6,
                       cursor: 'pointer',
                       transition: 'color 0.2s',
                       '&:hover': { color: '#D4AF37' },
