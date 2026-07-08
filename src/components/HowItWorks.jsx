@@ -253,20 +253,14 @@ export default function HowItWorks() {
             {/* Left: text */}
             <Box sx={{ flex: 1, position: 'relative', zIndex: 1 }}>
               <Typography sx={{
-                color: '#D4AF37', fontWeight: 700, fontSize: '0.78rem',
-                letterSpacing: 3, textTransform: 'uppercase', mb: 1.5,
-              }}>
-                Get In Touch
-              </Typography>
-              <Typography sx={{
                 color: '#FFFFFF', fontWeight: 800,
-                fontSize: { xs: '1.5rem', md: '1.9rem' },
-                lineHeight: 1.25, mb: 1.5,
+                fontSize: { xs: '1.7rem', md: '2.3rem' },
+                lineHeight: 1.2, mb: 1.5,
               }}>
-                Ready to take the<br />first step?
+                Ready to take the first step?
               </Typography>
               <Typography sx={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.95rem', lineHeight: 1.7 }}>
-                Our counsellors are available Mon–Sat,<br />9 AM to 7 PM. Reach out anytime.
+                Our counsellors are available Mon–Sat, 9 AM to 7 PM. Reach out anytime.
               </Typography>
             </Box>
 
