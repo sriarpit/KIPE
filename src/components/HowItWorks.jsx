@@ -5,6 +5,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import RecordVoiceOverIcon from '@mui/icons-material/RecordVoiceOver';
 import DescriptionIcon from '@mui/icons-material/Description';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 const steps = [
   {
@@ -13,6 +14,7 @@ const steps = [
     title: 'Enquire',
     body: 'Share your preferred course and mode of learning with our counselling team.',
     color: '#0C2340',
+    glow: 'rgba(12,35,64,0.45)',
   },
   {
     num: '02',
@@ -20,6 +22,7 @@ const steps = [
     title: 'Counselling',
     body: 'Get personalized guidance on the right university and programme fit for you.',
     color: '#7A1F2B',
+    glow: 'rgba(122,31,43,0.45)',
   },
   {
     num: '03',
@@ -27,6 +30,7 @@ const steps = [
     title: 'Documentation',
     body: 'We assist with forms, verification, and all required paperwork seamlessly.',
     color: '#0C2340',
+    glow: 'rgba(12,35,64,0.45)',
   },
   {
     num: '04',
@@ -34,94 +38,80 @@ const steps = [
     title: 'Enrollment',
     body: 'Confirm your admission and begin your exciting learning journey.',
     color: '#7A1F2B',
+    glow: 'rgba(122,31,43,0.45)',
   },
 ];
 
-function StepCard({ step, index, total }) {
+function StepCard({ step, index }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-60px' });
 
   return (
-    <Box sx={{ position: 'relative' }}>
-      <motion.div
-        ref={ref}
-        initial={{ opacity: 0, y: 50 }}
-        animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.6, delay: index * 0.15, ease: 'easeOut' }}
-      >
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 50 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6, delay: index * 0.18, ease: 'easeOut' }}
+    >
+      <Box sx={{ position: 'relative', textAlign: 'center', px: 2 }}>
+        {/* Icon circle — zIndex 2 keeps it above the connector line */}
         <Box
           sx={{
+            width: 80,
+            height: 80,
+            borderRadius: '50%',
+            bgcolor: step.color,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            mx: 'auto',
+            mb: 3,
             position: 'relative',
-            textAlign: 'center',
-            px: 2,
+            zIndex: 2,
+            border: '3px solid #D4AF37',
+            color: '#FFFFFF',
+            cursor: 'default',
+            transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+            '&:hover': {
+              transform: 'scale(1.12) translateY(-5px)',
+              boxShadow: `0 14px 36px ${step.glow}`,
+            },
           }}
         >
-          {/* Number circle */}
+          {step.icon}
+
+          {/* Step number badge */}
           <Box
             sx={{
-              width: 80,
-              height: 80,
+              position: 'absolute',
+              top: -10, right: -10,
+              width: 28, height: 28,
+              bgcolor: '#D4AF37',
               borderRadius: '50%',
-              bgcolor: step.color,
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              mx: 'auto',
-              mb: 3,
-              position: 'relative',
-              border: '3px solid #D4AF37',
-              color: '#FFFFFF',
-              flexDirection: 'column',
+              zIndex: 3,
+              boxShadow: '0 2px 8px rgba(212,175,55,0.55)',
             }}
           >
-            {step.icon}
-            <Box
-              sx={{
-                position: 'absolute',
-                top: -10, right: -10,
-                width: 28,
-                height: 28,
-                bgcolor: '#D4AF37',
-                borderRadius: '50%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-            >
-              <Typography sx={{ color: '#0C2340', fontWeight: 800, fontSize: '0.7rem' }}>
-                {step.num}
-              </Typography>
-            </Box>
+            <Typography sx={{ color: '#0C2340', fontWeight: 800, fontSize: '0.7rem' }}>
+              {step.num}
+            </Typography>
           </Box>
-
-          <Typography
-            variant="h5"
-            sx={{ color: '#0C2340', fontWeight: 700, mb: 1.5, fontSize: '1.15rem' }}
-          >
-            {step.title}
-          </Typography>
-          <Typography sx={{ color: '#5C5C5C', lineHeight: 1.7, fontSize: '0.93rem' }}>
-            {step.body}
-          </Typography>
         </Box>
-      </motion.div>
 
-      {/* Connector line */}
-      {index < total - 1 && (
-        <Box
-          sx={{
-            display: { xs: 'none', md: 'block' },
-            position: 'absolute',
-            top: 40,
-            right: '-50%',
-            width: '100%',
-            height: 2,
-            background: 'linear-gradient(to right, #D4AF37, rgba(212,175,55,0.2))',
-            zIndex: 0,
-          }}
-        />
-      )}
-    </Box>
+        <Typography
+          variant="h5"
+          sx={{ color: '#0C2340', fontWeight: 700, mb: 1.5, fontSize: '1.15rem' }}
+        >
+          {step.title}
+        </Typography>
+        <Typography sx={{ color: '#5C5C5C', lineHeight: 1.7, fontSize: '0.93rem' }}>
+          {step.body}
+        </Typography>
+      </Box>
+    </motion.div>
   );
 }
 
@@ -130,10 +120,7 @@ export default function HowItWorks() {
   const headerInView = useInView(headerRef, { once: true, margin: '-60px' });
 
   return (
-    <Box
-      id="how-it-works"
-      sx={{ py: { xs: 8, md: 12 }, bgcolor: '#FFFFFF' }}
-    >
+    <Box id="how-it-works" sx={{ py: { xs: 8, md: 12 }, bgcolor: '#FFFFFF' }}>
       <Container maxWidth="lg">
         {/* Header */}
         <motion.div
@@ -163,13 +150,74 @@ export default function HowItWorks() {
         </motion.div>
 
         {/* Steps */}
-        <Grid container spacing={{ xs: 4, md: 2 }} sx={{ position: 'relative' }}>
-          {steps.map((step, i) => (
-            <Grid size={{ xs: 12, sm: 6, md: 3 }} key={step.num} sx={{ position: 'relative' }}>
-              <StepCard step={step} index={i} total={steps.length} />
-            </Grid>
+        <Box sx={{ position: 'relative' }}>
+
+          {/* ── Connector track (desktop only) ── */}
+          <Box
+            sx={{
+              display: { xs: 'none', md: 'block' },
+              position: 'absolute',
+              top: 40,
+              left: '12.5%',
+              width: '75%',
+              height: 3,
+              bgcolor: 'rgba(212,175,55,0.15)',
+              borderRadius: 4,
+              zIndex: 0,
+              overflow: 'hidden',
+            }}
+          >
+            {/* Animated fill */}
+            <motion.div
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.3, ease: 'easeOut', delay: 0.25 }}
+              style={{
+                height: '100%',
+                background: 'linear-gradient(to right, #D4AF37 0%, rgba(212,175,55,0.55) 50%, #D4AF37 100%)',
+                transformOrigin: 'left',
+                borderRadius: 4,
+              }}
+            />
+          </Box>
+
+          {/* ── Arrow dots between each step (desktop only) ── */}
+          {[0, 1, 2].map((i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, scale: 0 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.6 + i * 0.15 }}
+              style={{
+                position: 'absolute',
+                top: 29,
+                left: `${25 * (i + 1)}%`,
+                transform: 'translateX(-50%)',
+                zIndex: 3,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: 24,
+                height: 24,
+                background: '#D4AF37',
+                borderRadius: '50%',
+                boxShadow: '0 2px 10px rgba(212,175,55,0.6)',
+              }}
+            >
+              <ArrowForwardIcon style={{ fontSize: 13, color: '#0C2340' }} />
+            </motion.div>
           ))}
-        </Grid>
+
+          <Grid container spacing={{ xs: 4, md: 2 }}>
+            {steps.map((step, i) => (
+              <Grid size={{ xs: 12, sm: 6, md: 3 }} key={step.num}>
+                <StepCard step={step} index={i} />
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
 
         {/* Bottom banner */}
         <motion.div
