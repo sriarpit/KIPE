@@ -115,10 +115,12 @@ export default function Contact() {
                   gap: 3,
                 }}
               >
-                <Box component="img" src="/kipe-logo.png" alt="KIPE" sx={{ width: 100, mb: 1 }} />
-                <Typography sx={{ color: '#D4AF37', fontWeight: 700, fontSize: '1.1rem' }}>
-                  Kalpataru Institute of Professional Education
-                </Typography>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                  <Box component="img" src="/kipe-logo.png" alt="KIPE" sx={{ width: 80, flexShrink: 0 }} />
+                  <Typography sx={{ color: '#D4AF37', fontWeight: 700, fontSize: '1.05rem', lineHeight: 1.4 }}>
+                    Kalpataru Institute of Professional Education
+                  </Typography>
+                </Box>
                 <Typography sx={{ color: 'rgba(255,255,255,0.75)', fontSize: '0.9rem', lineHeight: 1.7 }}>
                   Your trusted partner for university admissions across Online, Distance, and Regular learning modes.
                 </Typography>
