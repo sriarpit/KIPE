@@ -70,21 +70,84 @@ export default function About() {
               />
             </AnimatedSection>
 
-            {/* Decorative card */}
+            {/* Brand identity card */}
             <AnimatedSection delay={0.2}>
               <Box
                 sx={{
                   bgcolor: '#0C2340',
                   borderRadius: 3,
-                  p: 3,
-                  textAlign: 'center',
-                  display: { xs: 'none', md: 'block' },
+                  p: 3.5,
+                  display: { xs: 'none', md: 'flex' },
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  gap: 2,
+                  position: 'relative',
+                  overflow: 'hidden',
                 }}
               >
-                <Box component="img" src="/kipe-logo.png" alt="KIPE" sx={{ width: 120, mb: 1.5 }} />
-                <Typography sx={{ color: '#D4AF37', fontWeight: 700, fontSize: '0.85rem', letterSpacing: 1 }}>
-                  Kalpataru Institute of<br />Professional Education
-                </Typography>
+                {/* Background glow circles */}
+                <Box sx={{ position: 'absolute', top: -40, right: -40, width: 160, height: 160, borderRadius: '50%', bgcolor: 'rgba(212,175,55,0.06)' }} />
+                <Box sx={{ position: 'absolute', bottom: -30, left: -30, width: 120, height: 120, borderRadius: '50%', bgcolor: 'rgba(212,175,55,0.04)' }} />
+
+                {/* KIPE monogram */}
+                <Box
+                  sx={{
+                    width: 90, height: 90,
+                    borderRadius: '50%',
+                    border: '2px solid rgba(212,175,55,0.4)',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    background: 'linear-gradient(135deg, rgba(212,175,55,0.15) 0%, rgba(212,175,55,0.05) 100%)',
+                    boxShadow: '0 0 32px rgba(212,175,55,0.15)',
+                  }}
+                >
+                  <Typography sx={{
+                    fontWeight: 900,
+                    fontSize: '2rem',
+                    letterSpacing: '-1px',
+                    background: 'linear-gradient(135deg, #F5D76E 0%, #D4AF37 100%)',
+                    backgroundClip: 'text',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                  }}>
+                    KIPE
+                  </Typography>
+                </Box>
+
+                {/* Divider */}
+                <Box sx={{ width: 40, height: 2, bgcolor: 'rgba(212,175,55,0.4)', borderRadius: 1 }} />
+
+                {/* Name */}
+                <Box sx={{ textAlign: 'center' }}>
+                  <Typography sx={{
+                    color: '#FFFFFF',
+                    fontWeight: 700,
+                    fontSize: '0.95rem',
+                    lineHeight: 1.5,
+                    letterSpacing: 0.3,
+                  }}>
+                    Kalpataru Institute
+                  </Typography>
+                  <Typography sx={{
+                    color: 'rgba(255,255,255,0.55)',
+                    fontWeight: 400,
+                    fontSize: '0.8rem',
+                    letterSpacing: 0.5,
+                  }}>
+                    of Professional Education
+                  </Typography>
+                </Box>
+
+                {/* Est. tag */}
+                <Box sx={{
+                  px: 2, py: 0.6,
+                  border: '1px solid rgba(212,175,55,0.25)',
+                  borderRadius: 5,
+                  bgcolor: 'rgba(212,175,55,0.07)',
+                }}>
+                  <Typography sx={{ color: '#D4AF37', fontSize: '0.7rem', fontWeight: 600, letterSpacing: 2 }}>
+                    EST. IN JAIPUR
+                  </Typography>
+                </Box>
               </Box>
             </AnimatedSection>
           </Grid>
