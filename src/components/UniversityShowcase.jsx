@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { Box, Container, Typography, Grid, Chip, IconButton } from '@mui/material';
-import { motion, AnimatePresence } from 'framer-motion';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
@@ -132,11 +131,6 @@ for (let i = 0; i < universities.length; i += CARDS_PER_PAGE) {
   pages.push(universities.slice(i, i + CARDS_PER_PAGE));
 }
 
-const slideVariants = {
-  enter: (dir) => ({ x: dir > 0 ? '100%' : '-100%', opacity: 0 }),
-  center:        { x: 0, opacity: 1 },
-  exit:  (dir) => ({ x: dir > 0 ? '-100%' : '100%', opacity: 0 }),
-};
 
 const modeStyle = {
   Online:   { bgcolor: '#E3F2FD', color: '#1565C0', border: '1px solid #BBDEFB' },
@@ -230,7 +224,6 @@ function UniCard({ uni }) {
 
 export default function UniversityShowcase() {
   const [page, setPage] = useState(0);
-  const [direction, setDirection] = useState(1);
   const [paused, setPaused] = useState(false);
   const pauseTimer = useRef(null);
   const autoTimer = useRef(null);
@@ -241,25 +234,23 @@ export default function UniversityShowcase() {
     pauseTimer.current = setTimeout(() => setPaused(false), PAUSE_DURATION);
   }, []);
 
-  const goTo = useCallback((newPage, dir, manual = false) => {
-    setDirection(dir);
+  const goTo = useCallback((newPage, manual = false) => {
     setPage(newPage);
     if (manual) triggerPause();
   }, [triggerPause]);
 
   const prev = useCallback(() => {
-    goTo((page - 1 + pages.length) % pages.length, -1, true);
+    goTo((page - 1 + pages.length) % pages.length, true);
   }, [page, goTo]);
 
   const next = useCallback(() => {
-    goTo((page + 1) % pages.length, 1, true);
+    goTo((page + 1) % pages.length, true);
   }, [page, goTo]);
 
   /* auto-advance */
   useEffect(() => {
     if (paused) return;
     autoTimer.current = setInterval(() => {
-      setDirection(1);
       setPage(p => (p + 1) % pages.length);
     }, AUTO_INTERVAL);
     return () => clearInterval(autoTimer.current);
@@ -329,27 +320,25 @@ export default function UniversityShowcase() {
             <ChevronLeftIcon />
           </IconButton>
 
-          {/* Slide window */}
+          {/* Slide window — all slides stay in DOM, no logo reloads */}
           <Box sx={{ overflow: 'hidden', mx: { xs: 4, md: 0 } }}>
-            <AnimatePresence mode="wait" custom={direction}>
-              <motion.div
-                key={page}
-                custom={direction}
-                variants={slideVariants}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                transition={{ duration: 0.38, ease: [0.4, 0, 0.2, 1] }}
-              >
-                <Grid container spacing={2}>
-                  {pages[page].map((uni) => (
-                    <Grid size={{ xs: 6, sm: 6, md: 4 }} key={uni.name}>
-                      <UniCard uni={uni} />
-                    </Grid>
-                  ))}
-                </Grid>
-              </motion.div>
-            </AnimatePresence>
+            <Box sx={{
+              display: 'flex',
+              transform: `translateX(${-page * 100}%)`,
+              transition: 'transform 0.42s cubic-bezier(0.4, 0, 0.2, 1)',
+            }}>
+              {pages.map((slide, slideIdx) => (
+                <Box key={slideIdx} sx={{ minWidth: '100%' }}>
+                  <Grid container spacing={2}>
+                    {slide.map((uni) => (
+                      <Grid size={{ xs: 6, sm: 6, md: 4 }} key={uni.name}>
+                        <UniCard uni={uni} />
+                      </Grid>
+                    ))}
+                  </Grid>
+                </Box>
+              ))}
+            </Box>
           </Box>
 
           {/* Next arrow */}
@@ -373,13 +362,13 @@ export default function UniversityShowcase() {
           </IconButton>
         </Box>
 
-        {/* Dots + progress */}
+        {/* Dots + progress bar */}
         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mt: 4, gap: 1.5 }}>
           <Box sx={{ display: 'flex', gap: 1 }}>
             {pages.map((_, i) => (
               <Box
                 key={i}
-                onClick={() => goTo(i, i >= page ? 1 : -1, true)}
+                onClick={() => goTo(i, true)}
                 sx={{
                   width: i === page ? 28 : 8,
                   height: 8,
@@ -393,7 +382,6 @@ export default function UniversityShowcase() {
             ))}
           </Box>
 
-          {/* Progress bar */}
           <Box sx={{ width: 200, height: 3, bgcolor: '#E8E4E0', borderRadius: 2, overflow: 'hidden' }}>
             <Box
               key={`${page}-${paused}`}
@@ -406,11 +394,6 @@ export default function UniversityShowcase() {
               }}
             />
           </Box>
-
-          <Typography sx={{ fontSize: '0.72rem', color: '#9AA5B4', letterSpacing: 1 }}>
-            {page + 1} / {pages.length}
-            {paused ? '  ·  Paused' : '  ·  Auto-scrolling'}
-          </Typography>
         </Box>
 
       </Container>
