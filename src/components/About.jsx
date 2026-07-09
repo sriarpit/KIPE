@@ -70,7 +70,7 @@ export default function About() {
               />
             </AnimatedSection>
 
-            {/* Brand identity card */}
+            {/* Brand identity card — Design 3: Crest/Seal */}
             <AnimatedSection delay={0.2}>
               <Box
                 sx={{
@@ -80,73 +80,66 @@ export default function About() {
                   display: { xs: 'none', md: 'flex' },
                   flexDirection: 'column',
                   alignItems: 'center',
-                  gap: 2,
+                  gap: 1.5,
+                  border: '1px solid rgba(212,175,55,0.15)',
                   position: 'relative',
                   overflow: 'hidden',
                 }}
               >
-                {/* Background glow circles */}
-                <Box sx={{ position: 'absolute', top: -40, right: -40, width: 160, height: 160, borderRadius: '50%', bgcolor: 'rgba(212,175,55,0.06)' }} />
-                <Box sx={{ position: 'absolute', bottom: -30, left: -30, width: 120, height: 120, borderRadius: '50%', bgcolor: 'rgba(212,175,55,0.04)' }} />
-
-                {/* KIPE monogram */}
-                <Box
-                  sx={{
-                    width: 90, height: 90,
-                    borderRadius: '50%',
-                    border: '2px solid rgba(212,175,55,0.4)',
+                {/* Outer decorative ring with KIPE center */}
+                <Box sx={{
+                  width: 130, height: 130, borderRadius: '50%',
+                  border: '2px solid rgba(212,175,55,0.35)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  position: 'relative',
+                  mt: 1,
+                }}>
+                  {/* Inner dashed ring */}
+                  <Box sx={{
+                    width: 104, height: 104, borderRadius: '50%',
+                    border: '1px dashed rgba(212,175,55,0.22)',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    background: 'linear-gradient(135deg, rgba(212,175,55,0.15) 0%, rgba(212,175,55,0.05) 100%)',
-                    boxShadow: '0 0 32px rgba(212,175,55,0.15)',
-                  }}
-                >
-                  <Typography sx={{
-                    fontWeight: 900,
-                    fontSize: '2rem',
-                    letterSpacing: '-1px',
-                    background: 'linear-gradient(135deg, #F5D76E 0%, #D4AF37 100%)',
-                    backgroundClip: 'text',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
+                    flexDirection: 'column',
                   }}>
-                    KIPE
-                  </Typography>
+                    <Typography sx={{
+                      fontWeight: 900, fontSize: '2rem', letterSpacing: '-1px',
+                      background: 'linear-gradient(135deg, #F5D76E, #D4AF37)',
+                      backgroundClip: 'text', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+                      lineHeight: 1,
+                    }}>
+                      KIPE
+                    </Typography>
+                    <Box sx={{ width: 30, height: 1.5, bgcolor: 'rgba(212,175,55,0.5)', mt: 0.6 }} />
+                  </Box>
+                  {/* Gold dots at cardinal points */}
+                  {[0, 90, 180, 270].map(deg => (
+                    <Box key={deg} sx={{
+                      position: 'absolute', width: 7, height: 7, borderRadius: '50%',
+                      background: 'linear-gradient(135deg, #F5D76E, #D4AF37)',
+                      boxShadow: '0 0 6px rgba(212,175,55,0.6)',
+                      top: '50%', left: '50%',
+                      transform: `rotate(${deg}deg) translate(61px) rotate(-${deg}deg) translate(-3.5px, -3.5px)`,
+                    }} />
+                  ))}
                 </Box>
-
-                {/* Divider */}
-                <Box sx={{ width: 40, height: 2, bgcolor: 'rgba(212,175,55,0.4)', borderRadius: 1 }} />
 
                 {/* Name */}
                 <Box sx={{ textAlign: 'center' }}>
-                  <Typography sx={{
-                    color: '#FFFFFF',
-                    fontWeight: 700,
-                    fontSize: '0.95rem',
-                    lineHeight: 1.5,
-                    letterSpacing: 0.3,
-                  }}>
+                  <Typography sx={{ color: '#FFFFFF', fontWeight: 700, fontSize: '0.92rem', letterSpacing: 0.5, mb: 0.3 }}>
                     Kalpataru Institute
                   </Typography>
-                  <Typography sx={{
-                    color: 'rgba(255,255,255,0.55)',
-                    fontWeight: 400,
-                    fontSize: '0.8rem',
-                    letterSpacing: 0.5,
-                  }}>
+                  <Typography sx={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.72rem', letterSpacing: 1.5, textTransform: 'uppercase' }}>
                     of Professional Education
                   </Typography>
                 </Box>
 
-                {/* Est. tag */}
-                <Box sx={{
-                  px: 2, py: 0.6,
-                  border: '1px solid rgba(212,175,55,0.25)',
-                  borderRadius: 5,
-                  bgcolor: 'rgba(212,175,55,0.07)',
-                }}>
-                  <Typography sx={{ color: '#D4AF37', fontSize: '0.7rem', fontWeight: 600, letterSpacing: 2 }}>
-                    EST. IN JAIPUR
+                {/* JAIPUR, INDIA tag */}
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                  <Box sx={{ width: 24, height: 1, bgcolor: 'rgba(212,175,55,0.35)' }} />
+                  <Typography sx={{ color: '#D4AF37', fontSize: '0.65rem', fontWeight: 700, letterSpacing: 2 }}>
+                    JAIPUR, INDIA
                   </Typography>
+                  <Box sx={{ width: 24, height: 1, bgcolor: 'rgba(212,175,55,0.35)' }} />
                 </Box>
               </Box>
             </AnimatedSection>
