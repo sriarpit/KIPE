@@ -95,6 +95,21 @@ const universities = [
     domain: 'universityoftechnology.edu.in', modes: ['Regular'],
     logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/0/03/University_of_Technology%2C_Jaipur_logo.svg/500px-University_of_Technology%2C_Jaipur_logo.svg.png',
   },
+  {
+    name: 'Jaipur National University', abbr: 'JNU', color: '#B71C1C',
+    domain: 'jnujaipur.ac.in', modes: ['Online', 'Distance'],
+    logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/e/e5/Jaipur_National_University_logo.png/500px-Jaipur_National_University_logo.png',
+  },
+  {
+    name: 'Desh Bhagat University', abbr: 'DBU', color: '#1A237E',
+    domain: 'deshbhagatuniversity.in', modes: ['Online', 'Distance'],
+    logo: 'https://deshbhagatuniversity.in/wp-content/uploads/2024/12/logopng.png',
+  },
+  {
+    name: 'Ganpat University', abbr: 'GUNI', color: '#E65100',
+    domain: 'ganpatuniversity.ac.in', modes: ['Online', 'Regular'],
+    logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/1/16/Logo_of_Ganpat_University.png/500px-Logo_of_Ganpat_University.png',
+  },
 ];
 
 const modeStyle = {
@@ -161,13 +176,27 @@ export default function UniversityShowcase() {
             color: '#7A1F2B', fontWeight: 800,
             letterSpacing: 3, fontSize: '0.85rem', display: 'block', mb: 1,
           }}>
-            Our Network
+            Trusted University Network
           </Typography>
           <Typography variant="h2" sx={{
             color: '#0C2340', fontWeight: 800,
-            fontSize: { xs: '1.8rem', md: '2.4rem' }, mb: 1.5,
+            fontSize: { xs: '1.8rem', md: '2.4rem' }, mb: 1,
           }}>
-            100+ University Tie-Ups Across India
+            One Expert. 100+ Universities.{' '}
+            <Box component="span" sx={{
+              background: 'linear-gradient(135deg, #D4AF37 0%, #C09B22 100%)',
+              backgroundClip: 'text',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+            }}>
+              Endless Possibilities.
+            </Box>
+          </Typography>
+          <Typography sx={{
+            color: '#5C6B7A', fontSize: { xs: '0.9rem', md: '1rem' },
+            mb: 2, fontWeight: 400,
+          }}>
+            All UGC-recognised universities. Expert guidance at every step.
           </Typography>
           <Box sx={{ width: 60, height: 4, bgcolor: '#D4AF37', borderRadius: 2, mx: 'auto' }} />
         </Box>
