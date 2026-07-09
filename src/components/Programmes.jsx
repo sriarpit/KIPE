@@ -48,13 +48,14 @@ export default function Programmes() {
         </motion.div>
 
         {/* UG / PG Cards */}
-        <Grid container spacing={3} sx={{ mb: 4 }}>
+        <Grid container spacing={3} sx={{ mb: 4, alignItems: 'stretch' }}>
           {[
             { label: 'UNDERGRADUATE', title: 'UG Programmes', courses: ugCourses, color: '#0C2340' },
             { label: 'POSTGRADUATE', title: 'PG Programmes', courses: pgCourses, color: '#7A1F2B' },
           ].map((item, i) => (
-            <Grid size={{ xs: 12, md: 6 }} key={item.title}>
+            <Grid size={{ xs: 12, md: 6 }} key={item.title} sx={{ display: 'flex' }}>
               <motion.div
+                style={{ width: '100%', height: '100%' }}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
