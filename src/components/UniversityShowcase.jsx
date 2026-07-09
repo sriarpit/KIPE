@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
-import { Box, Container, Typography, Grid, Chip } from '@mui/material';
-import { motion } from 'framer-motion';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
+import { Box, Container, Typography, Grid, Chip, IconButton } from '@mui/material';
+import { motion, AnimatePresence } from 'framer-motion';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 const universities = [
   {
@@ -121,6 +123,21 @@ const universities = [
   },
 ];
 
+const CARDS_PER_PAGE = 6;
+const AUTO_INTERVAL = 5000;
+const PAUSE_DURATION = 15000;
+
+const pages = [];
+for (let i = 0; i < universities.length; i += CARDS_PER_PAGE) {
+  pages.push(universities.slice(i, i + CARDS_PER_PAGE));
+}
+
+const slideVariants = {
+  enter: (dir) => ({ x: dir > 0 ? '100%' : '-100%', opacity: 0 }),
+  center:        { x: 0, opacity: 1 },
+  exit:  (dir) => ({ x: dir > 0 ? '-100%' : '100%', opacity: 0 }),
+};
+
 const modeStyle = {
   Online:   { bgcolor: '#E3F2FD', color: '#1565C0', border: '1px solid #BBDEFB' },
   Distance: { bgcolor: '#E8F5E9', color: '#2E7D32', border: '1px solid #C8E6C9' },
@@ -134,7 +151,6 @@ function UniLogo({ uni, size = 60 }) {
     `https://logo.clearbit.com/${uni.domain}?size=512`,
     `https://www.google.com/s2/favicons?domain=${uni.domain}&sz=256`,
   ];
-
   if (attempt < sources.length) {
     return (
       <Box
@@ -146,7 +162,6 @@ function UniLogo({ uni, size = 60 }) {
       />
     );
   }
-
   return (
     <Box sx={{
       width: size, height: size, bgcolor: `${uni.color}15`, borderRadius: 1.5,
@@ -175,11 +190,92 @@ function ModeTags({ modes }) {
   );
 }
 
+function UniCard({ uni }) {
+  return (
+    <Box sx={{
+      display: 'flex', alignItems: 'center', gap: 2, p: 2.5,
+      borderRadius: 3, bgcolor: '#FFFFFF',
+      boxShadow: '0 2px 12px rgba(0,0,0,0.06)',
+      borderLeft: `4px solid ${uni.color}`,
+      height: '100%',
+      transition: 'all 0.25s ease',
+      '&:hover': {
+        boxShadow: '0 8px 28px rgba(12,35,64,0.13)',
+        transform: 'translateY(-3px)',
+        borderLeft: '4px solid #D4AF37',
+      },
+    }}>
+      <Box sx={{
+        width: 64, height: 64,
+        bgcolor: `${uni.color}08`,
+        borderRadius: 2,
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        border: `1px solid ${uni.color}25`,
+        flexShrink: 0, overflow: 'hidden',
+      }}>
+        <UniLogo uni={uni} size={52} />
+      </Box>
+      <Box sx={{ flex: 1 }}>
+        <Typography sx={{
+          color: '#0C2340', fontWeight: 700,
+          fontSize: '0.87rem', mb: 0.8, lineHeight: 1.3,
+        }}>
+          {uni.name}
+        </Typography>
+        <ModeTags modes={uni.modes} />
+      </Box>
+    </Box>
+  );
+}
+
 export default function UniversityShowcase() {
+  const [page, setPage] = useState(0);
+  const [direction, setDirection] = useState(1);
+  const [paused, setPaused] = useState(false);
+  const pauseTimer = useRef(null);
+  const autoTimer = useRef(null);
+
+  const triggerPause = useCallback(() => {
+    setPaused(true);
+    clearTimeout(pauseTimer.current);
+    pauseTimer.current = setTimeout(() => setPaused(false), PAUSE_DURATION);
+  }, []);
+
+  const goTo = useCallback((newPage, dir, manual = false) => {
+    setDirection(dir);
+    setPage(newPage);
+    if (manual) triggerPause();
+  }, [triggerPause]);
+
+  const prev = useCallback(() => {
+    goTo((page - 1 + pages.length) % pages.length, -1, true);
+  }, [page, goTo]);
+
+  const next = useCallback(() => {
+    goTo((page + 1) % pages.length, 1, true);
+  }, [page, goTo]);
+
+  /* auto-advance */
+  useEffect(() => {
+    if (paused) return;
+    autoTimer.current = setInterval(() => {
+      setDirection(1);
+      setPage(p => (p + 1) % pages.length);
+    }, AUTO_INTERVAL);
+    return () => clearInterval(autoTimer.current);
+  }, [paused]);
+
+  /* cleanup on unmount */
+  useEffect(() => () => {
+    clearInterval(autoTimer.current);
+    clearTimeout(pauseTimer.current);
+  }, []);
+
   return (
     <Box id="partners" sx={{ py: 7, bgcolor: '#FAF8F5' }}>
       <Container maxWidth="lg">
 
+        {/* Header */}
         <Box sx={{ textAlign: 'center', mb: 5 }}>
           <Typography variant="overline" sx={{
             color: '#7A1F2B', fontWeight: 800,
@@ -210,51 +306,112 @@ export default function UniversityShowcase() {
           <Box sx={{ width: 60, height: 4, bgcolor: '#D4AF37', borderRadius: 2, mx: 'auto' }} />
         </Box>
 
-        <Grid container spacing={2}>
-          {universities.map((uni, i) => (
-            <Grid size={{ xs: 12, sm: 6, md: 4 }} key={uni.name}>
+        {/* Carousel */}
+        <Box sx={{ position: 'relative' }}>
+
+          {/* Prev arrow */}
+          <IconButton
+            onClick={prev}
+            sx={{
+              position: 'absolute',
+              left: { xs: -8, md: -52 },
+              top: '50%',
+              transform: 'translateY(-50%)',
+              zIndex: 10,
+              bgcolor: '#FFFFFF',
+              boxShadow: '0 4px 16px rgba(0,0,0,0.12)',
+              border: '1px solid #E8E4E0',
+              width: 44, height: 44,
+              '&:hover': { bgcolor: '#0C2340', color: '#D4AF37', borderColor: '#0C2340' },
+              transition: 'all 0.2s ease',
+            }}
+          >
+            <ChevronLeftIcon />
+          </IconButton>
+
+          {/* Slide window */}
+          <Box sx={{ overflow: 'hidden', mx: { xs: 4, md: 0 } }}>
+            <AnimatePresence mode="wait" custom={direction}>
               <motion.div
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.04 }}
+                key={page}
+                custom={direction}
+                variants={slideVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{ duration: 0.38, ease: [0.4, 0, 0.2, 1] }}
               >
-                <Box sx={{
-                  display: 'flex', alignItems: 'center', gap: 2, p: 2.5,
-                  borderRadius: 3, bgcolor: '#FFFFFF',
-                  boxShadow: '0 2px 12px rgba(0,0,0,0.06)',
-                  borderLeft: `4px solid ${uni.color}`,
-                  transition: 'all 0.25s ease',
-                  '&:hover': {
-                    boxShadow: '0 8px 28px rgba(12,35,64,0.13)',
-                    transform: 'translateY(-3px)',
-                    borderLeft: '4px solid #D4AF37',
-                  },
-                }}>
-                  <Box sx={{
-                    width: 64, height: 64,
-                    bgcolor: `${uni.color}08`,
-                    borderRadius: 2,
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    border: `1px solid ${uni.color}25`,
-                    flexShrink: 0, overflow: 'hidden',
-                  }}>
-                    <UniLogo uni={uni} size={52} />
-                  </Box>
-                  <Box sx={{ flex: 1 }}>
-                    <Typography sx={{
-                      color: '#0C2340', fontWeight: 700,
-                      fontSize: '0.87rem', mb: 0.8, lineHeight: 1.3,
-                    }}>
-                      {uni.name}
-                    </Typography>
-                    <ModeTags modes={uni.modes} />
-                  </Box>
-                </Box>
+                <Grid container spacing={2}>
+                  {pages[page].map((uni) => (
+                    <Grid size={{ xs: 6, sm: 6, md: 4 }} key={uni.name}>
+                      <UniCard uni={uni} />
+                    </Grid>
+                  ))}
+                </Grid>
               </motion.div>
-            </Grid>
-          ))}
-        </Grid>
+            </AnimatePresence>
+          </Box>
+
+          {/* Next arrow */}
+          <IconButton
+            onClick={next}
+            sx={{
+              position: 'absolute',
+              right: { xs: -8, md: -52 },
+              top: '50%',
+              transform: 'translateY(-50%)',
+              zIndex: 10,
+              bgcolor: '#FFFFFF',
+              boxShadow: '0 4px 16px rgba(0,0,0,0.12)',
+              border: '1px solid #E8E4E0',
+              width: 44, height: 44,
+              '&:hover': { bgcolor: '#0C2340', color: '#D4AF37', borderColor: '#0C2340' },
+              transition: 'all 0.2s ease',
+            }}
+          >
+            <ChevronRightIcon />
+          </IconButton>
+        </Box>
+
+        {/* Dots + progress */}
+        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mt: 4, gap: 1.5 }}>
+          <Box sx={{ display: 'flex', gap: 1 }}>
+            {pages.map((_, i) => (
+              <Box
+                key={i}
+                onClick={() => goTo(i, i >= page ? 1 : -1, true)}
+                sx={{
+                  width: i === page ? 28 : 8,
+                  height: 8,
+                  borderRadius: 4,
+                  bgcolor: i === page ? '#D4AF37' : '#CBD5E0',
+                  cursor: 'pointer',
+                  transition: 'all 0.35s ease',
+                  '&:hover': { bgcolor: i === page ? '#D4AF37' : '#A0AEC0' },
+                }}
+              />
+            ))}
+          </Box>
+
+          {/* Progress bar */}
+          <Box sx={{ width: 200, height: 3, bgcolor: '#E8E4E0', borderRadius: 2, overflow: 'hidden' }}>
+            <Box
+              key={`${page}-${paused}`}
+              sx={{
+                height: '100%',
+                bgcolor: '#D4AF37',
+                borderRadius: 2,
+                width: paused ? '0%' : '100%',
+                transition: paused ? 'none' : `width ${AUTO_INTERVAL}ms linear`,
+              }}
+            />
+          </Box>
+
+          <Typography sx={{ fontSize: '0.72rem', color: '#9AA5B4', letterSpacing: 1 }}>
+            {page + 1} / {pages.length}
+            {paused ? '  ·  Paused' : '  ·  Auto-scrolling'}
+          </Typography>
+        </Box>
 
       </Container>
     </Box>
