@@ -6,6 +6,7 @@ const universities = [
   {
     name: 'GLA University', abbr: 'GLA', color: '#1565C0',
     domain: 'gla.ac.in', modes: ['Online'],
+    logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/4/42/GLA_University_logo.png/500px-GLA_University_logo.png',
   },
   {
     name: 'Manipal University', abbr: 'MU', color: '#6A1B9A',
@@ -33,18 +34,22 @@ const universities = [
   {
     name: 'Kurukshetra University', abbr: 'KU', color: '#4A148C',
     domain: 'kuk.ac.in', modes: ['Online'],
+    logo: 'https://upload.wikimedia.org/wikipedia/en/1/1d/Kurukshetra_University_logo.png',
   },
   {
     name: 'LPU', abbr: 'LPU', color: '#BF360C',
     domain: 'lpu.in', modes: ['Online'],
+    logo: 'https://upload.wikimedia.org/wikipedia/en/3/3a/Lovely_Professional_University_logo.png',
   },
   {
     name: 'Parul University', abbr: 'PU', color: '#1B5E20',
     domain: 'paruluniversity.ac.in', modes: ['Online'],
+    logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/0/01/Parul_University_logo.svg/500px-Parul_University_logo.svg.png',
   },
   {
     name: 'Shoolini University', abbr: 'SHU', color: '#880E4F',
     domain: 'shooliniuniversity.com', modes: ['Online'],
+    logo: 'https://shooliniuniversity.com/assets/images/logo.png',
   },
   {
     name: 'Amity University', abbr: 'AU', color: '#F57F17',
@@ -67,14 +72,17 @@ const universities = [
   {
     name: 'Sharda University', abbr: 'SHD', color: '#283593',
     domain: 'sharda.ac.in', modes: ['Online'],
+    logo: 'https://upload.wikimedia.org/wikipedia/en/1/16/Sharda_University_logo_no_wordmark.png',
   },
   {
     name: 'DY Patil University', abbr: 'DYP', color: '#AD1457',
     domain: 'dypatil.edu', modes: ['Online'],
+    logo: 'https://dypatil-edu-cms.s3.ap-south-1.amazonaws.com/static-images/icons/logo.svg',
   },
   {
     name: 'Vivekanand Global University', abbr: 'VGU', color: '#00695C',
     domain: 'vgu.ac.in', modes: ['Online', 'Distance'],
+    logo: 'https://vgu.ac.in/assets/images/vgu-logo-n.png',
   },
   {
     name: 'Mangalayatan University', abbr: 'MYU', color: '#558B2F',
@@ -89,6 +97,7 @@ const universities = [
   {
     name: 'Swami Vivekanand Subharti University', abbr: 'SVSU', color: '#0288D1',
     domain: 'subharti.org', modes: ['Distance'],
+    logo: 'https://upload.wikimedia.org/wikipedia/en/3/3d/SVSU-transparent-Logo.png',
   },
   {
     name: 'University of Technology', abbr: 'UOT', color: '#5D4037',
