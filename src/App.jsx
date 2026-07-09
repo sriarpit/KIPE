@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
+import AboutBrandShowcase from './components/AboutBrandShowcase';
 import WhyKIPE from './components/WhyKIPE';
 import Programmes from './components/Programmes';
 import UniversityPartners from './components/UniversityShowcase';
@@ -16,6 +17,7 @@ export default function App() {
       <main>
         <Hero />
         <About />
+        <AboutBrandShowcase />
         <WhyKIPE />
         <Programmes />
         <UniversityPartners />
