@@ -20,7 +20,7 @@ export default function Programmes() {
   const headerInView = useInView(headerRef, { once: true, margin: '-60px' });
 
   return (
-    <Box id="programmes" sx={{ pt: { xs: 2, md: 3 }, pb: { xs: 3, md: 4 }, bgcolor: '#FAF8F5' }}>
+    <Box id="programmes" sx={{ pt: { xs: 4, md: 5 }, pb: { xs: 4, md: 5 }, bgcolor: '#FAF8F5' }}>
       <Container maxWidth="lg">
 
         {/* Header */}

@@ -24,7 +24,7 @@ export default function About() {
     <Box
       id="about"
       sx={{
-        py: { xs: 6, md: 8 },
+        py: { xs: 5, md: 7 },
         bgcolor: '#FFFFFF',
       }}
     >
