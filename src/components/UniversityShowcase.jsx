@@ -263,7 +263,7 @@ export default function UniversityShowcase() {
   }, []);
 
   return (
-    <Box id="partners" sx={{ pt: { xs: 5, md: 6 }, pb: { xs: 5, md: 7 }, bgcolor: '#FAF8F5' }}>
+    <Box id="partners" sx={{ pt: { xs: 3, md: 4 }, pb: { xs: 5, md: 7 }, bgcolor: '#FAF8F5' }}>
       <Container maxWidth="lg">
 
         {/* Header */}
