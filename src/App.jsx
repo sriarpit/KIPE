@@ -4,7 +4,7 @@ import Hero from './components/Hero';
 import About from './components/About';
 import WhyKIPE from './components/WhyKIPE';
 import Programmes from './components/Programmes';
-import UniversityPartners from './components/UniversityPartners';
+import UniversityPartners from './components/UniversityShowcase';
 import HowItWorks from './components/HowItWorks';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
