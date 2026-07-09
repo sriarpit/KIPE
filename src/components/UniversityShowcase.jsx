@@ -263,11 +263,11 @@ export default function UniversityShowcase() {
   }, []);
 
   return (
-    <Box id="partners" sx={{ py: 7, bgcolor: '#FAF8F5' }}>
+    <Box id="partners" sx={{ pt: { xs: 5, md: 6 }, pb: { xs: 5, md: 7 }, bgcolor: '#FAF8F5' }}>
       <Container maxWidth="lg">
 
         {/* Header */}
-        <Box sx={{ textAlign: 'center', mb: 5 }}>
+        <Box sx={{ textAlign: 'center', mb: 4 }}>
           <Typography variant="overline" sx={{
             color: '#7A1F2B', fontWeight: 800,
             letterSpacing: 3, fontSize: '0.85rem', display: 'block', mb: 1,
