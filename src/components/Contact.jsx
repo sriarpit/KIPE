@@ -115,23 +115,35 @@ export default function Contact() {
                   gap: 3,
                 }}
               >
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                  <Box component="img" src="/kipe-logo.png" alt="KIPE" sx={{ width: 80, flexShrink: 0 }} />
+                <Box>
                   <Typography
                     sx={{
                       fontWeight: 800,
-                      fontSize: '1.25rem',
-                      lineHeight: 1.35,
-                      background: 'linear-gradient(135deg, #F5D76E 0%, #D4AF37 50%, #C09B22 100%)',
+                      fontSize: { xs: '1.75rem', md: '2rem' },
+                      lineHeight: 1.2,
+                      letterSpacing: '-0.5px',
+                      background: 'linear-gradient(135deg, #F5D76E 0%, #D4AF37 55%, #C09B22 100%)',
                       backgroundClip: 'text',
                       WebkitBackgroundClip: 'text',
                       WebkitTextFillColor: 'transparent',
-                      filter: 'drop-shadow(0 2px 8px rgba(212,175,55,0.35))',
-                      letterSpacing: 0.3,
+                      filter: 'drop-shadow(0 2px 10px rgba(212,175,55,0.4))',
+                      mb: 0.5,
                     }}
                   >
-                    Kalpataru Institute of Professional Education
+                    Kalpataru Institute
                   </Typography>
+                  <Typography
+                    sx={{
+                      fontWeight: 700,
+                      fontSize: { xs: '1.1rem', md: '1.25rem' },
+                      lineHeight: 1.3,
+                      color: 'rgba(255,255,255,0.85)',
+                      letterSpacing: 0.5,
+                    }}
+                  >
+                    of Professional Education
+                  </Typography>
+                  <Box sx={{ width: 48, height: 3, bgcolor: '#D4AF37', borderRadius: 2, mt: 1.5, opacity: 0.7 }} />
                 </Box>
                 <Typography sx={{ color: 'rgba(255,255,255,0.75)', fontSize: '0.9rem', lineHeight: 1.7 }}>
                   Your trusted partner for university admissions across Online, Distance, and Regular learning modes.
