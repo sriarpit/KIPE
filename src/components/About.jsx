@@ -133,14 +133,6 @@ export default function About() {
                   </Typography>
                 </Box>
 
-                {/* JAIPUR, INDIA tag */}
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                  <Box sx={{ width: 24, height: 1, bgcolor: 'rgba(212,175,55,0.35)' }} />
-                  <Typography sx={{ color: '#D4AF37', fontSize: '0.65rem', fontWeight: 700, letterSpacing: 2 }}>
-                    JAIPUR, INDIA
-                  </Typography>
-                  <Box sx={{ width: 24, height: 1, bgcolor: 'rgba(212,175,55,0.35)' }} />
-                </Box>
               </Box>
             </AnimatedSection>
           </Grid>

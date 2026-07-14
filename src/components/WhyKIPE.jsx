@@ -8,25 +8,25 @@ import CareerIcon from '@mui/icons-material/TrendingUp';
 
 const pillars = [
   {
-    icon: <FlexibilityIcon sx={{ fontSize: 36 }} />,
+    icon: <FlexibilityIcon sx={{ fontSize: { xs: 26, md: 36 } }} />,
     title: 'Flexibility First',
     body: 'Online, distance, and regular options so you learn on your own terms — anytime, anywhere.',
     color: '#0C2340',
   },
   {
-    icon: <VerifiedIcon sx={{ fontSize: 36 }} />,
+    icon: <VerifiedIcon sx={{ fontSize: { xs: 26, md: 36 } }} />,
     title: 'Verified Partnerships',
     body: '100+ UGC-recognized and approved university tie-ups ensuring quality and credibility.',
     color: '#7A1F2B',
   },
   {
-    icon: <SupportIcon sx={{ fontSize: 36 }} />,
+    icon: <SupportIcon sx={{ fontSize: { xs: 26, md: 36 } }} />,
     title: 'End-to-End Support',
     body: 'From counselling and course selection to admission and documentation — we handle it all.',
     color: '#0C2340',
   },
   {
-    icon: <CareerIcon sx={{ fontSize: 36 }} />,
+    icon: <CareerIcon sx={{ fontSize: { xs: 26, md: 36 } }} />,
     title: 'Career-Focused',
     body: 'Programmes chosen for real-world relevance and employability in today\'s competitive market.',
     color: '#7A1F2B',
@@ -48,7 +48,7 @@ function PillarCard({ pillar, index }) {
       <Paper
         elevation={0}
         sx={{
-          p: 4,
+          p: { xs: 2.5, md: 4 },
           height: '100%',
           border: '1px solid #E8E4E0',
           borderRadius: 3,
@@ -73,8 +73,8 @@ function PillarCard({ pillar, index }) {
         {/* Icon bubble */}
         <Box
           sx={{
-            width: 68,
-            height: 68,
+            width: { xs: 52, md: 68 },
+            height: { xs: 52, md: 68 },
             borderRadius: '50%',
             bgcolor: `${pillar.color}14`,
             display: 'flex',
@@ -87,16 +87,6 @@ function PillarCard({ pillar, index }) {
           {pillar.icon}
         </Box>
 
-        {/* Gold accent dot */}
-        <Box
-          sx={{
-            width: 8,
-            height: 8,
-            bgcolor: '#D4AF37',
-            borderRadius: '50%',
-            mb: 1.5,
-          }}
-        />
 
         <Typography
           variant="h5"

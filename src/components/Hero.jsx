@@ -178,14 +178,14 @@ export default function Hero() {
             </motion.div>
 
             <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={4}>
-              <Box sx={{ mt: 6, display: 'flex', gap: 5 }}>
+              <Box sx={{ mt: { xs: 4, md: 6 }, display: 'flex', gap: { xs: 3, md: 5 }, flexWrap: 'wrap' }}>
                 {[
                   { num: '100+', label: 'University Partners' },
                   { num: '3', label: 'Learning Modes' },
                   { num: '50+', label: 'Programmes' },
                 ].map(({ num, label }) => (
                   <Box key={label}>
-                    <Typography sx={{ color: '#D4AF37', fontWeight: 800, fontSize: '1.9rem', lineHeight: 1 }}>{num}</Typography>
+                    <Typography sx={{ color: '#D4AF37', fontWeight: 800, fontSize: { xs: '1.5rem', md: '1.9rem' }, lineHeight: 1 }}>{num}</Typography>
                     <Typography sx={{ color: 'rgba(255,255,255,0.55)', fontSize: '0.78rem', mt: 0.4 }}>{label}</Typography>
                   </Box>
                 ))}

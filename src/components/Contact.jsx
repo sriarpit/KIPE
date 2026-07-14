@@ -31,11 +31,11 @@ export default function Contact() {
 
   const validate = () => {
     const e = {};
-    if (!form.fullName.trim()) e.fullName = 'Name is required';
-    if (!form.email.trim() || !/\S+@\S+\.\S+/.test(form.email)) e.email = 'Valid email required';
-    if (!form.phone.trim() || !/^\d{10}$/.test(form.phone.replace(/\s/g, ''))) e.phone = '10-digit phone required';
-    if (!form.programme) e.programme = 'Please select a programme';
-    if (!form.mode) e.mode = 'Please select a mode';
+    if (!form.fullName.trim()) e.fullName = 'Please enter your full name';
+    if (!form.email.trim() || !/\S+@\S+\.\S+/.test(form.email)) e.email = 'Please enter a valid email address';
+    if (!form.phone.trim() || !/^\d{10}$/.test(form.phone.replace(/\s/g, ''))) e.phone = 'Please enter a valid 10-digit phone number';
+    if (!form.programme) e.programme = 'Please select a preferred programme';
+    if (!form.mode) e.mode = 'Please select a preferred mode';
     return e;
   };
 
@@ -109,7 +109,7 @@ export default function Contact() {
                   borderRadius: 3,
                   p: 4,
                   height: '100%',
-                  minHeight: 400,
+                  minHeight: { xs: 'auto', md: 400 },
                   display: 'flex',
                   flexDirection: 'column',
                   gap: 3,
@@ -143,7 +143,7 @@ export default function Contact() {
                   >
                     of Professional Education
                   </Typography>
-                  <Box sx={{ width: 48, height: 3, bgcolor: '#D4AF37', borderRadius: 2, mt: 1.5, opacity: 0.7 }} />
+                  <Box sx={{ width: 48, height: 3, bgcolor: '#D4AF37', borderRadius: 2, mt: 1.5, opacity: 0.7, mx: 'auto' }} />
                 </Box>
                 <Typography sx={{ color: 'rgba(255,255,255,0.75)', fontSize: '0.9rem', lineHeight: 1.7 }}>
                   Your trusted partner for university admissions across Online, Distance, and Regular learning modes.

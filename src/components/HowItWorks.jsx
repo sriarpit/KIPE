@@ -12,7 +12,7 @@ import EmailIcon from '@mui/icons-material/Email';
 const steps = [
   {
     num: '01',
-    icon: <SearchIcon sx={{ fontSize: 30 }} />,
+    icon: <SearchIcon sx={{ fontSize: { xs: 22, md: 30 } }} />,
     title: 'Enquire',
     body: 'Share your preferred course and mode of learning with our counselling team.',
     color: '#0C2340',
@@ -20,7 +20,7 @@ const steps = [
   },
   {
     num: '02',
-    icon: <RecordVoiceOverIcon sx={{ fontSize: 30 }} />,
+    icon: <RecordVoiceOverIcon sx={{ fontSize: { xs: 22, md: 30 } }} />,
     title: 'Counselling',
     body: 'Get personalized guidance on the right university and programme fit for you.',
     color: '#7A1F2B',
@@ -28,7 +28,7 @@ const steps = [
   },
   {
     num: '03',
-    icon: <DescriptionIcon sx={{ fontSize: 30 }} />,
+    icon: <DescriptionIcon sx={{ fontSize: { xs: 22, md: 30 } }} />,
     title: 'Documentation',
     body: 'We assist with forms, verification, and all required paperwork seamlessly.',
     color: '#0C2340',
@@ -36,7 +36,7 @@ const steps = [
   },
   {
     num: '04',
-    icon: <CheckCircleIcon sx={{ fontSize: 30 }} />,
+    icon: <CheckCircleIcon sx={{ fontSize: { xs: 22, md: 30 } }} />,
     title: 'Enrollment',
     body: 'Confirm your admission and begin your exciting learning journey.',
     color: '#7A1F2B',
@@ -59,8 +59,8 @@ function StepCard({ step, index }) {
         {/* Icon circle — zIndex 2 keeps it above the connector line */}
         <Box
           sx={{
-            width: 80,
-            height: 80,
+            width: { xs: 60, md: 80 },
+            height: { xs: 60, md: 80 },
             borderRadius: '50%',
             bgcolor: step.color,
             display: 'flex',

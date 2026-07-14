@@ -48,7 +48,7 @@ export default function Navbar() {
         <Toolbar sx={{ justifyContent: 'space-between', px: { xs: 2, md: 6 }, py: 1 }}>
           {/* Logo */}
           <Link to="hero" smooth duration={600} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
-            <Box component="img" src="/kipe-logo.png" alt="KIPE Logo" sx={{ height: 52, mr: 1.5 }} />
+            <Box component="img" src="/kipe-logo.png" alt="KIPE Logo" sx={{ height: { xs: 44, md: 52 }, mr: 1.5 }} />
           </Link>
 
           {/* Desktop nav */}

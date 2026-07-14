@@ -24,10 +24,10 @@ export default function Footer() {
   return (
     <Box
       component="footer"
-      sx={{ bgcolor: '#0C2340', color: '#FFFFFF', pt: 8, pb: 3 }}
+      sx={{ bgcolor: '#0C2340', color: '#FFFFFF', pt: { xs: 5, md: 8 }, pb: 3 }}
     >
       <Container maxWidth="lg">
-        <Grid container spacing={5}>
+        <Grid container spacing={{ xs: 3, md: 5 }}>
           {/* Brand column */}
           <Grid size={{ xs: 12, md: 4 }}>
             {/* Logo + name side by side */}
@@ -37,8 +37,8 @@ export default function Footer() {
                 src="/kipe-logo.png"
                 alt="KIPE Logo"
                 sx={{
-                  height: 110,
-                  width: 110,
+                  height: { xs: 70, md: 110 },
+                  width: { xs: 70, md: 110 },
                   objectFit: 'contain',
                   flexShrink: 0,
                   filter: 'drop-shadow(0 4px 14px rgba(212,175,55,0.3))',
@@ -53,7 +53,7 @@ export default function Footer() {
                 <Typography
                   sx={{
                     fontWeight: 800,
-                    fontSize: '3.8rem',
+                    fontSize: { xs: '2.2rem', md: '3.8rem' },
                     lineHeight: 1.1,
                     mb: 0.5,
                     background: 'linear-gradient(135deg, #F5D76E 0%, #D4AF37 55%, #C09B22 100%)',

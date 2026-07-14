@@ -65,7 +65,7 @@ export default function Programmes() {
                   sx={{
                     bgcolor: item.color,
                     borderRadius: 3,
-                    p: 4,
+                    p: { xs: 2.5, md: 4 },
                     height: '100%',
                     position: 'relative',
                     overflow: 'hidden',
@@ -78,7 +78,7 @@ export default function Programmes() {
                     {item.label}
                   </Typography>
                   <Box sx={{ display: 'flex', alignItems: 'baseline', gap: 2, mb: 0.5 }}>
-                    <Typography sx={{ color: '#FFFFFF', fontWeight: 800, fontSize: '1.6rem' }}>{item.title}</Typography>
+                    <Typography sx={{ color: '#FFFFFF', fontWeight: 800, fontSize: { xs: '1.3rem', md: '1.6rem' } }}>{item.title}</Typography>
                     <Typography sx={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.85rem' }}>{item.courses.length} Courses</Typography>
                   </Box>
                   <Box sx={{ width: 40, height: 2, bgcolor: '#D4AF37', borderRadius: 1, mb: 3 }} />
@@ -118,7 +118,7 @@ export default function Programmes() {
                   sx={{
                     bgcolor: '#FFFFFF',
                     borderRadius: 2.5,
-                    p: 3,
+                    p: { xs: 2, md: 3 },
                     display: 'flex',
                     alignItems: 'center',
                     gap: 2,
@@ -170,7 +170,7 @@ export default function Programmes() {
             }}
           >
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-              <ImportContactsIcon sx={{ color: '#0C2340', fontSize: 36 }} />
+              <ImportContactsIcon sx={{ color: '#0C2340', fontSize: { xs: 28, md: 36 } }} />
               <Box>
                 <Typography sx={{ color: '#0C2340', fontWeight: 800, fontSize: '1.05rem' }}>
                   Class 10th & 12th via NIOS

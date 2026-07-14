@@ -187,7 +187,7 @@ function ModeTags({ modes }) {
 function UniCard({ uni }) {
   return (
     <Box sx={{
-      display: 'flex', alignItems: 'center', gap: 2, p: 2.5,
+      display: 'flex', alignItems: 'center', gap: { xs: 1.5, md: 2 }, p: { xs: 1.5, md: 2.5 },
       borderRadius: 3, bgcolor: '#FFFFFF',
       boxShadow: '0 2px 12px rgba(0,0,0,0.06)',
       borderLeft: `4px solid ${uni.color}`,
@@ -200,14 +200,14 @@ function UniCard({ uni }) {
       },
     }}>
       <Box sx={{
-        width: 64, height: 64,
+        width: { xs: 48, md: 64 }, height: { xs: 48, md: 64 },
         bgcolor: `${uni.color}08`,
         borderRadius: 2,
         display: 'flex', alignItems: 'center', justifyContent: 'center',
         border: `1px solid ${uni.color}25`,
         flexShrink: 0, overflow: 'hidden',
       }}>
-        <UniLogo uni={uni} size={52} />
+        <UniLogo uni={uni} size={40} />
       </Box>
       <Box sx={{ flex: 1 }}>
         <Typography sx={{
