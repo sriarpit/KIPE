@@ -1,6 +1,12 @@
 import React from 'react';
 import { Box, Container, Typography, Grid, Divider, IconButton } from '@mui/material';
-import { Link } from 'react-scroll';
+
+const scrollTo = (id) => {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const top = el.getBoundingClientRect().top + window.scrollY - 100;
+  window.scrollTo({ top, behavior: 'smooth' });
+};
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
@@ -133,19 +139,19 @@ export default function Footer() {
             </Typography>
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.2 }}>
               {quickLinks.map((link) => (
-                <Link key={link.to} to={link.to} smooth duration={600} offset={-100}>
-                  <Typography
-                    sx={{
-                      color: 'rgba(255,255,255,0.65)',
-                      fontSize: '0.88rem',
-                      cursor: 'pointer',
-                      transition: 'color 0.2s',
-                      '&:hover': { color: '#D4AF37' },
-                    }}
-                  >
-                    {link.label}
-                  </Typography>
-                </Link>
+                <Typography
+                  key={link.to}
+                  onClick={() => scrollTo(link.to)}
+                  sx={{
+                    color: 'rgba(255,255,255,0.65)',
+                    fontSize: '0.88rem',
+                    cursor: 'pointer',
+                    transition: 'color 0.2s',
+                    '&:hover': { color: '#D4AF37' },
+                  }}
+                >
+                  {link.label}
+                </Typography>
               ))}
             </Box>
           </Grid>

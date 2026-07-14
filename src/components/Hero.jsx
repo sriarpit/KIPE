@@ -1,8 +1,14 @@
 import React from 'react';
 import { Box, Typography, Button, Chip, Container } from '@mui/material';
 import { motion } from 'framer-motion';
-import { Link } from 'react-scroll';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+
+const scrollTo = (id) => {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const top = el.getBoundingClientRect().top + window.scrollY - 100;
+  window.scrollTo({ top, behavior: 'smooth' });
+};
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import StarIcon from '@mui/icons-material/Star';
 import SchoolIcon from '@mui/icons-material/School';
@@ -146,34 +152,32 @@ export default function Hero() {
 
             <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={3}>
               <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
-                <Link to="programmes" smooth duration={700} offset={-100}>
-                  <Button
-                    variant="contained"
-                    size="large"
-                    endIcon={<ArrowForwardIcon />}
-                    sx={{
-                      bgcolor: '#D4AF37', color: '#0C2340', fontWeight: 700,
-                      px: 3.5, py: 1.5, fontSize: '0.95rem',
-                      '&:hover': { bgcolor: '#c09b22', transform: 'translateY(-2px)', boxShadow: '0 8px 24px rgba(212,175,55,0.4)' },
-                      transition: 'all 0.2s ease',
-                    }}
-                  >
-                    Explore Programmes
-                  </Button>
-                </Link>
-                <Link to="contact" smooth duration={700} offset={-100}>
-                  <Button
-                    variant="outlined"
-                    size="large"
-                    sx={{
-                      borderColor: 'rgba(255,255,255,0.4)', color: '#FFFFFF', fontWeight: 600,
-                      px: 3.5, py: 1.5, fontSize: '0.95rem',
-                      '&:hover': { borderColor: '#D4AF37', color: '#D4AF37', bgcolor: 'rgba(212,175,55,0.08)' },
-                    }}
-                  >
-                    Free Counselling
-                  </Button>
-                </Link>
+                <Button
+                  variant="contained"
+                  size="large"
+                  endIcon={<ArrowForwardIcon />}
+                  onClick={() => scrollTo('programmes')}
+                  sx={{
+                    bgcolor: '#D4AF37', color: '#0C2340', fontWeight: 700,
+                    px: 3.5, py: 1.5, fontSize: '0.95rem',
+                    '&:hover': { bgcolor: '#c09b22', transform: 'translateY(-2px)', boxShadow: '0 8px 24px rgba(212,175,55,0.4)' },
+                    transition: 'all 0.2s ease',
+                  }}
+                >
+                  Explore Programmes
+                </Button>
+                <Button
+                  variant="outlined"
+                  size="large"
+                  onClick={() => scrollTo('contact')}
+                  sx={{
+                    borderColor: 'rgba(255,255,255,0.4)', color: '#FFFFFF', fontWeight: 600,
+                    px: 3.5, py: 1.5, fontSize: '0.95rem',
+                    '&:hover': { borderColor: '#D4AF37', color: '#D4AF37', bgcolor: 'rgba(212,175,55,0.08)' },
+                  }}
+                >
+                  Free Counselling
+                </Button>
               </Box>
             </motion.div>
 
