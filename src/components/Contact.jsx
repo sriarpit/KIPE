@@ -48,6 +48,20 @@ export default function Contact() {
     e.preventDefault();
     const e2 = validate();
     if (Object.keys(e2).length) { setErrors(e2); return; }
+
+    const text = [
+      `*New Enquiry – KIPE Website*`,
+      ``,
+      `*Name:* ${form.fullName}`,
+      `*Email:* ${form.email}`,
+      `*Phone:* ${form.phone}`,
+      `*Programme:* ${form.programme}`,
+      `*Mode:* ${form.mode}`,
+      form.message ? `*Message:* ${form.message}` : null,
+    ].filter(Boolean).join('\n');
+
+    window.open(`https://wa.me/919116032816?text=${encodeURIComponent(text)}`, '_blank');
+
     setSubmitted(true);
     setForm(initialForm);
   };
