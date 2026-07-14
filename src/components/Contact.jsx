@@ -60,7 +60,7 @@ export default function Contact() {
       form.message ? `*Message:* ${form.message}` : null,
     ].filter(Boolean).join('\n');
 
-    window.open(`https://wa.me/919116032816?text=${encodeURIComponent(text)}`, '_blank');
+    window.open(`https://wa.me/918005891190?text=${encodeURIComponent(text)}`, '_blank');
 
     setSubmitted(true);
     setForm(initialForm);
