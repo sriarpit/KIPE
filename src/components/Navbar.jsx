@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {
   AppBar, Toolbar, Box, Button, IconButton, Drawer,
-  List, ListItem, ListItemText, useScrollTrigger, Slide,
+  List, ListItem, ListItemText,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
@@ -16,15 +16,6 @@ const navLinks = [
   { label: 'Contact', to: 'contact' },
 ];
 
-function HideOnScroll({ children }) {
-  const trigger = useScrollTrigger();
-  return (
-    <Slide appear={false} direction="down" in={!trigger}>
-      {children}
-    </Slide>
-  );
-}
-
 export default function Navbar() {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -36,7 +27,6 @@ export default function Navbar() {
   }, []);
 
   return (
-    <HideOnScroll>
       <AppBar
         position="fixed"
         elevation={scrolled ? 4 : 0}
@@ -54,7 +44,7 @@ export default function Navbar() {
           {/* Desktop nav */}
           <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 0.5 }}>
             {navLinks.map((link) => (
-              <Link key={link.to} to={link.to} smooth duration={600} offset={-80}>
+              <Link key={link.to} to={link.to} smooth duration={600} offset={-100}>
                 <Button
                   sx={{
                     color: '#FFFFFF',
@@ -81,7 +71,7 @@ export default function Navbar() {
                 </Button>
               </Link>
             ))}
-            <Link to="contact" smooth duration={600} offset={-80}>
+            <Link to="contact" smooth duration={600} offset={-100}>
               <Button
                 variant="contained"
                 sx={{
@@ -126,7 +116,7 @@ export default function Navbar() {
                   to={link.to}
                   smooth
                   duration={600}
-                  offset={-80}
+                  offset={-100}
                   style={{ width: '100%' }}
                   onClick={() => setDrawerOpen(false)}
                 >
@@ -147,7 +137,7 @@ export default function Navbar() {
               </ListItem>
             ))}
             <ListItem sx={{ px: 3, pt: 2 }}>
-              <Link to="contact" smooth duration={600} offset={-80} style={{ width: '100%' }} onClick={() => setDrawerOpen(false)}>
+              <Link to="contact" smooth duration={600} offset={-100} style={{ width: '100%' }} onClick={() => setDrawerOpen(false)}>
                 <Button
                   fullWidth
                   variant="contained"
@@ -160,6 +150,5 @@ export default function Navbar() {
           </List>
         </Drawer>
       </AppBar>
-    </HideOnScroll>
   );
 }

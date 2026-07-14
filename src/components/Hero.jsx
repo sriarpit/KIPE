@@ -146,7 +146,7 @@ export default function Hero() {
 
             <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={3}>
               <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
-                <Link to="programmes" smooth duration={700} offset={-80}>
+                <Link to="programmes" smooth duration={700} offset={-100}>
                   <Button
                     variant="contained"
                     size="large"
@@ -161,7 +161,7 @@ export default function Hero() {
                     Explore Programmes
                   </Button>
                 </Link>
-                <Link to="contact" smooth duration={700} offset={-80}>
+                <Link to="contact" smooth duration={700} offset={-100}>
                   <Button
                     variant="outlined"
                     size="large"

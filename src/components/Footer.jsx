@@ -133,7 +133,7 @@ export default function Footer() {
             </Typography>
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.2 }}>
               {quickLinks.map((link) => (
-                <Link key={link.to} to={link.to} smooth duration={600} offset={-80}>
+                <Link key={link.to} to={link.to} smooth duration={600} offset={-100}>
                   <Typography
                     sx={{
                       color: 'rgba(255,255,255,0.65)',
