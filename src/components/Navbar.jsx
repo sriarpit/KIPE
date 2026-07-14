@@ -15,10 +15,12 @@ const navLinks = [
   { label: 'Contact', to: 'contact' },
 ];
 
+const NAVBAR_HEIGHT = 70;
+
 const scrollTo = (id) => {
   const el = document.getElementById(id);
   if (!el) return;
-  const top = el.getBoundingClientRect().top + window.scrollY - 100;
+  const top = el.getBoundingClientRect().top + window.scrollY - NAVBAR_HEIGHT;
   window.scrollTo({ top, behavior: 'smooth' });
 };
 
