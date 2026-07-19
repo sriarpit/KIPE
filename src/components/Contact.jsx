@@ -1,13 +1,18 @@
 import React, { useState, useRef } from 'react';
 import {
   Box, Container, Typography, Grid, TextField, Button,
-  MenuItem, Alert, Snackbar,
+  MenuItem, Alert, Snackbar, CircularProgress,
 } from '@mui/material';
 import { motion, useInView } from 'framer-motion';
+import emailjs from '@emailjs/browser';
 import SendIcon from '@mui/icons-material/Send';
 import PhoneIcon from '@mui/icons-material/Phone';
 import EmailIcon from '@mui/icons-material/Email';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+
+const EMAILJS_SERVICE_ID  = 'service_b3j1s0e';
+const EMAILJS_TEMPLATE_ID = 'template_9uum40s';
+const EMAILJS_PUBLIC_KEY  = '4V3Fx-gpbbwT8Ej6r';
 
 const programmes = [
   'BBA', 'BCA', 'BA', 'B.Sc (PCM)', 'B.Lib', 'BA Journalism', 'B.Com',
@@ -25,6 +30,8 @@ export default function Contact() {
   const [form, setForm] = useState(initialForm);
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState({});
+  const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState(false);
 
   const headerRef = useRef(null);
   const headerInView = useInView(headerRef, { once: true, margin: '-60px' });
@@ -44,26 +51,35 @@ export default function Contact() {
     setErrors((er) => ({ ...er, [e.target.name]: undefined }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const e2 = validate();
     if (Object.keys(e2).length) { setErrors(e2); return; }
 
-    const text = [
-      `*New Enquiry – KIPE Website*`,
-      ``,
-      `*Name:* ${form.fullName}`,
-      `*Email:* ${form.email}`,
-      `*Phone:* ${form.phone}`,
-      `*Programme:* ${form.programme}`,
-      `*Mode:* ${form.mode}`,
-      form.message ? `*Message:* ${form.message}` : null,
-    ].filter(Boolean).join('\n');
+    setSending(true);
+    setSendError(false);
 
-    window.open(`https://wa.me/918005891190?text=${encodeURIComponent(text)}`, '_blank');
-
-    setSubmitted(true);
-    setForm(initialForm);
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          from_name:  form.fullName,
+          reply_to:   form.email,
+          phone:       form.phone,
+          programme:  form.programme,
+          mode:        form.mode,
+          message:     form.message || 'No message provided',
+        },
+        { publicKey: EMAILJS_PUBLIC_KEY }
+      );
+      setSubmitted(true);
+      setForm(initialForm);
+    } catch {
+      setSendError(true);
+    } finally {
+      setSending(false);
+    }
   };
 
   const inputSx = {
@@ -288,7 +304,8 @@ export default function Contact() {
                       variant="contained"
                       size="large"
                       fullWidth
-                      endIcon={<SendIcon />}
+                      disabled={sending}
+                      endIcon={sending ? <CircularProgress size={18} color="inherit" /> : <SendIcon />}
                       sx={{
                         bgcolor: '#0C2340',
                         color: '#D4AF37',
@@ -304,7 +321,7 @@ export default function Contact() {
                         transition: 'all 0.2s ease',
                       }}
                     >
-                      Get Free Counselling
+                      {sending ? 'Sending...' : 'Get Free Counselling'}
                     </Button>
                   </Grid>
                 </Grid>
@@ -322,6 +339,17 @@ export default function Contact() {
       >
         <Alert onClose={() => setSubmitted(false)} severity="success" variant="filled" sx={{ bgcolor: '#0C2340' }}>
           Thank you! Our counsellor will contact you soon.
+        </Alert>
+      </Snackbar>
+
+      <Snackbar
+        open={sendError}
+        autoHideDuration={5000}
+        onClose={() => setSendError(false)}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+      >
+        <Alert onClose={() => setSendError(false)} severity="error" variant="filled">
+          Something went wrong. Please try again or call us directly.
         </Alert>
       </Snackbar>
     </Box>
