@@ -1,5 +1,8 @@
 import React from 'react';
 import { Box, Container, Typography, Grid, Divider, IconButton } from '@mui/material';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
 const scrollTo = (id) => {
   const el = document.getElementById(id);
@@ -7,9 +10,6 @@ const scrollTo = (id) => {
   const top = el.getBoundingClientRect().top + window.scrollY - 70;
   window.scrollTo({ top, behavior: 'smooth' });
 };
-import FacebookIcon from '@mui/icons-material/Facebook';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
 const quickLinks = [
   { label: 'Home', to: 'hero' },
@@ -258,7 +258,7 @@ export default function Footer() {
             © 2025 Kalpataru Institute of Professional Education — All Rights Reserved
           </Typography>
           <Typography sx={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.82rem' }}>
-            Powered by{' '}
+            Designed & Developed by{' '}
             <Box
               component="a"
               href="https://thenexusmarketingpros.com/"
