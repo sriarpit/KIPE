@@ -257,21 +257,20 @@ export default function Footer() {
           <Typography sx={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.82rem' }}>
             © 2025 Kalpataru Institute of Professional Education — All Rights Reserved
           </Typography>
-          <Typography
-            component="a"
-            href="https://thenexusmarketingpros.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            sx={{
-              color: 'rgba(255,255,255,0.45)',
-              fontSize: '0.82rem',
-              textDecoration: 'none',
-              '&:hover': { color: '#D4AF37' },
-              transition: 'color 0.2s',
-            }}
-          >
+          <Typography sx={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.82rem' }}>
             Powered by{' '}
-            <Box component="span" sx={{ color: '#D4AF37', fontWeight: 600 }}>
+            <Box
+              component="a"
+              href="https://thenexusmarketingpros.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              sx={{
+                color: '#D4AF37',
+                fontWeight: 600,
+                textDecoration: 'none',
+                '&:hover': { textDecoration: 'underline' },
+              }}
+            >
               Nexus Marketing Pros
             </Box>
           </Typography>
