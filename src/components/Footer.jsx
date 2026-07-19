@@ -270,7 +270,7 @@ export default function Footer() {
               transition: 'color 0.2s',
             }}
           >
-            Website developed by{' '}
+            Powered by{' '}
             <Box component="span" sx={{ color: '#D4AF37', fontWeight: 600 }}>
               Nexus Marketing Pros
             </Box>
